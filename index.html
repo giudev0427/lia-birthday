@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LIA — A Little World of Magic. Un libro digital de cumpleaños íntimo y cinematográfico." />
+  <meta name="theme-color" content="#1A0A10" />
+  <title>LIA — A Little World of Magic</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Great+Vibes&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            night: '#1A0A10',
+            burgundy: '#5C1227',
+            ruby: '#C41E3A',
+            'ruby-deep': '#9B1B3A',
+            dusty: '#D4A5A5',
+            cream: '#F7F0E8',
+            champagne: '#C9A962',
+            garden: '#0F1A14'
+          },
+          fontFamily: {
+            display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            script: ['"Great Vibes"', 'cursive'],
+            sans: ['Outfit', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-night text-cream font-sans antialiased overflow-x-hidden">
+  <a class="skip-link" href="#book-stage">Saltar al libro</a>
+
+  <div class="fixed top-4 right-4 z-[80] flex items-center gap-2" role="group" aria-label="Controles de experiencia">
+    <button
+      id="music-toggle"
+      type="button"
+      class="control-btn"
+      aria-pressed="false"
+      aria-label="Activar música ambiental"
+      title="Música"
+    >
+      <svg class="icon-music-off" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M4 4l16 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <svg class="icon-music-on hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="world-atmosphere" aria-hidden="true">
+    <canvas id="welcome-particles" class="particle-canvas"></canvas>
+    <div class="world-vignette"></div>
+  </div>
+
+  <!-- BOOK EXPERIENCE -->
+  <div id="book-stage" class="book-stage" data-state="closed">
+    <p class="book-intro-text" id="book-intro">
+      Lia, hay un pequeño universo preparado para ti
+    </p>
+
+    <div class="book-scene" aria-label="Libro de cumpleaños de Lia">
+      <div class="book" id="magic-book">
+        <!-- Closed cover -->
+        <button
+          type="button"
+          class="book-cover"
+          id="open-book-btn"
+          aria-label="Abrir el libro de Lia"
+        >
+          <span class="book-cover__edge" aria-hidden="true"></span>
+          <span class="book-cover__front">
+            <span class="book-cover__ornament" aria-hidden="true"></span>
+            <img src="assets/svg/rose-hero.svg" alt="" class="book-cover__rose" width="140" height="184" decoding="async" />
+            <span class="book-cover__title">LIA</span>
+            <span class="book-cover__subtitle">A Little World of Magic</span>
+            <span class="book-cover__date">28 · XI</span>
+            <span class="book-cover__hint">Toca para abrir</span>
+          </span>
+          <span class="book-cover__inside" aria-hidden="true"></span>
+        </button>
+
+        <!-- Open spread -->
+        <div class="book-spread" id="book-spread" hidden>
+          <div class="book-spine" aria-hidden="true"></div>
+
+          <div class="book-sheet book-sheet--left" aria-hidden="true">
+            <div class="sheet-paper sheet-paper--left">
+              <div class="sheet-decoration">
+                <img src="assets/svg/rose-bloom.svg" alt="" width="72" height="86" loading="lazy" />
+                <p class="script-line sheet-script">Para Lia</p>
+                <p class="sheet-meta">Un pequeño universo</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="book-sheet book-sheet--right">
+            <div class="pages" id="book-pages">
+              <!-- PAGE 1 — Jardín -->
+              <article class="page is-active" data-page="0" id="page-garden" aria-label="Página 1: Jardín">
+                <div class="page-scroll">
+                  <header class="page-header">
+                    <p class="eyebrow">Capítulo I</p>
+                    <h2 class="section-title">Un jardín que florece de noche</h2>
+                    <p class="section-lead">
+                      Entre rosas rojas y luces tímidas, el aire guarda secretos suaves solo para ti.
+                    </p>
+                  </header>
+                  <div class="rose-field rose-field--page" aria-hidden="true">
+                    <img src="assets/svg/rose-bloom.svg" alt="" class="field-rose field-rose--a" width="120" height="144" loading="lazy" />
+                    <img src="assets/svg/rose-bloom.svg" alt="" class="field-rose field-rose--b" width="150" height="180" loading="lazy" />
+                    <img src="assets/svg/rose-bloom.svg" alt="" class="field-rose field-rose--d" width="130" height="156" loading="lazy" />
+                  </div>
+                  <div class="petal-layer" id="garden-petals" aria-hidden="true"></div>
+                  <p class="script-line garden-quote-inline">“Donde hay rosas, hay magia que se queda.”</p>
+                </div>
+              </article>
+
+              <!-- PAGE 2 — Compañeros -->
+              <article class="page" data-page="1" id="page-companions" aria-label="Página 2: Compañeros" hidden>
+                <div class="page-scroll">
+                  <header class="page-header">
+                    <p class="eyebrow">Capítulo II</p>
+                    <h2 class="section-title">Tu rincón de cariño</h2>
+                    <p class="section-lead">
+                      Un beagle soñador, un pajarito travieso, peluchitos y gatitos.
+                    </p>
+                  </header>
+                  <div class="companion-stage companion-stage--page">
+                    <figure class="companion-card companion-card--hero">
+                      <img src="assets/svg/companion-beagle.svg" alt="Beagle blanco soñador" width="180" height="195" loading="lazy" />
+                      <figcaption><span class="script-line">El guardián suave</span></figcaption>
+                    </figure>
+                    <figure class="companion-card">
+                      <img src="assets/svg/companion-bird.svg" alt="Pajarito amarillo" width="100" height="100" loading="lazy" />
+                      <figcaption><span class="script-line">El pajarito</span></figcaption>
+                    </figure>
+                    <figure class="companion-card">
+                      <img src="assets/svg/plush.svg" alt="Peluche rosado" width="120" height="138" loading="lazy" />
+                      <figcaption><span class="script-line">Peluchito</span></figcaption>
+                    </figure>
+                    <figure class="companion-card">
+                      <img src="assets/svg/kitten.svg" alt="Gatito crema" width="130" height="142" loading="lazy" />
+                      <figcaption><span class="script-line">Gatito</span></figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </article>
+
+              <!-- PAGE 3 — Carta -->
+              <article class="page" data-page="2" id="page-letter" aria-label="Página 3: Carta" hidden>
+                <div class="page-scroll">
+                  <header class="page-header">
+                    <p class="eyebrow">Capítulo III</p>
+                    <h2 class="section-title">Una carta para ti</h2>
+                    <p class="section-lead">Toca el sobre. Déjalo abrirse. Lee despacio.</p>
+                  </header>
+                  <div class="letter-stage">
+                    <button
+                      id="envelope-btn"
+                      type="button"
+                      class="envelope"
+                      aria-expanded="false"
+                      aria-controls="letter-panel"
+                    >
+                      <span class="sr-only">Abrir carta de cumpleaños</span>
+                      <span class="envelope__flap" aria-hidden="true"></span>
+                      <span class="envelope__body" aria-hidden="true">
+                        <span class="envelope__seal">L</span>
+                      </span>
+                      <span class="envelope__hint" aria-hidden="true">Abrir</span>
+                    </button>
+
+                    <article id="letter-panel" class="letter-panel" hidden>
+                      <p class="letter-date">28 de noviembre</p>
+                      <h3 class="letter-greeting script-line">Querida Lia,</h3>
+                      <div class="letter-body">
+                        <p>
+                          Hay días que brillan distinto. Hoy es uno de ellos:
+                          el día en que el mundo se detiene un segundo para celebrarte.
+                        </p>
+                        <p>
+                          Que este pequeño universo te recuerde lo valiosa que eres —
+                          tu ternura, tu magia, la forma en que llenas de luz lo ordinario.
+                        </p>
+                        <p>
+                          Que tu año nuevo personal traiga rosas, risas, abrazos suaves
+                          y todas las sorpresas bonitas que mereces.
+                        </p>
+                      </div>
+                      <p class="letter-signoff script-line">Con todo el cariño del mundo,</p>
+                      <p class="letter-from">Tu pequeño universo</p>
+                    </article>
+                  </div>
+                </div>
+              </article>
+
+              <!-- PAGE 4 — 28 -->
+              <article class="page" data-page="3" id="page-date" aria-label="Página 4: 28 de noviembre" hidden>
+                <div class="page-scroll">
+                  <header class="page-header">
+                    <p class="eyebrow">Capítulo IV</p>
+                    <h2 class="section-title">El día marcado en oro</h2>
+                  </header>
+                  <div class="date-composition date-composition--page">
+                    <div class="sparkle-field" id="date-sparkles" aria-hidden="true"></div>
+                    <div class="date-number" aria-label="Veintiocho">
+                      <span class="date-digit">2</span>
+                      <span class="date-digit">8</span>
+                    </div>
+                    <div class="date-ornament" aria-hidden="true">
+                      <img src="assets/svg/rose-bloom.svg" alt="" class="date-rose date-rose--left" width="80" height="96" loading="lazy" />
+                      <img src="assets/svg/rose-bloom.svg" alt="" class="date-rose date-rose--right" width="80" height="96" loading="lazy" />
+                    </div>
+                    <p class="date-month script-line">noviembre</p>
+                    <p class="date-caption">El día en que Lia hace magia con solo existir.</p>
+                  </div>
+                </div>
+              </article>
+
+              <!-- PAGE 5 — Finale -->
+              <article class="page" data-page="4" id="page-finale" aria-label="Página 5: Celebración" hidden>
+                <div class="page-scroll page-scroll--finale">
+                  <div class="finale-atmosphere" id="finale-layer" aria-hidden="true"></div>
+                  <p class="eyebrow">Última página</p>
+                  <h2 class="finale-title">Feliz cumpleaños, Lia</h2>
+                  <p class="finale-sub script-line">Que tu mundo siempre esté lleno de magia</p>
+                  <div class="finale-rose" aria-hidden="true">
+                    <img src="assets/svg/rose-hero.svg" alt="" width="140" height="184" loading="lazy" />
+                  </div>
+                  <button id="replay-btn" type="button" class="btn-ghost">
+                    Cerrar y volver a abrir
+                  </button>
+                </div>
+              </article>
+            </div>
+
+            <!-- Turning page overlay for flip animation -->
+            <div class="page-flip" id="page-flip" aria-hidden="true">
+              <div class="page-flip__face page-flip__face--front"></div>
+              <div class="page-flip__face page-flip__face--back"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-cta" id="book-cta">
+      <button id="discover-btn" type="button" class="btn-primary">
+        <span>Abrir el libro</span>
+        <span class="btn-sheen" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <nav class="book-nav" id="book-nav" hidden aria-label="Páginas del libro">
+      <button type="button" class="book-nav__btn" id="prev-page" aria-label="Página anterior" disabled>
+        <span aria-hidden="true">‹</span> Anterior
+      </button>
+      <ol class="book-nav__dots" id="page-dots">
+        <li><button type="button" class="scene-dot is-active" data-page="0" aria-label="Capítulo 1" aria-current="true"></button></li>
+        <li><button type="button" class="scene-dot" data-page="1" aria-label="Capítulo 2"></button></li>
+        <li><button type="button" class="scene-dot" data-page="2" aria-label="Capítulo 3"></button></li>
+        <li><button type="button" class="scene-dot" data-page="3" aria-label="Capítulo 4"></button></li>
+        <li><button type="button" class="scene-dot" data-page="4" aria-label="Última página"></button></li>
+      </ol>
+      <button type="button" class="book-nav__btn" id="next-page" aria-label="Página siguiente">
+        Siguiente <span aria-hidden="true">›</span>
+      </button>
+    </nav>
+  </div>
+
+  <script src="js/audio.js" defer></script>
+  <script src="js/particles.js" defer></script>
+  <script src="js/letter.js" defer></script>
+  <script src="js/book.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

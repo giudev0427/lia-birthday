@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 230" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="plush" x1="40%" y1="0%" x2="60%" y2="100%">
+      <stop offset="0%" stop-color="#E8C4C8"/>
+      <stop offset="100%" stop-color="#C99AA3"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="100" cy="215" rx="48" ry="9" fill="#2B1219" opacity="0.14"/>
+  <!-- ears -->
+  <circle cx="55" cy="70" r="28" fill="url(#plush)"/>
+  <circle cx="145" cy="70" r="28" fill="url(#plush)"/>
+  <circle cx="55" cy="70" r="16" fill="#F5D6DA"/>
+  <circle cx="145" cy="70" r="16" fill="#F5D6DA"/>
+  <!-- body -->
+  <ellipse cx="100" cy="155" rx="55" ry="50" fill="url(#plush)"/>
+  <!-- head -->
+  <circle cx="100" cy="90" r="48" fill="url(#plush)"/>
+  <!-- muzzle -->
+  <ellipse cx="100" cy="105" rx="22" ry="16" fill="#F8E8EA"/>
+  <!-- eyes -->
+  <circle cx="82" cy="85" r="6" fill="#3A2A24"/>
+  <circle cx="118" cy="85" r="6" fill="#3A2A24"/>
+  <circle cx="84" cy="83" r="2" fill="#FFF"/>
+  <circle cx="120" cy="83" r="2" fill="#FFF"/>
+  <!-- nose -->
+  <ellipse cx="100" cy="100" rx="7" ry="5" fill="#5C3A3A"/>
+  <!-- smile -->
+  <path d="M90 110 Q100 118 110 110" stroke="#5C3A3A" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- belly -->
+  <ellipse cx="100" cy="160" rx="28" ry="26" fill="#F8E8EA"/>
+  <!-- paws -->
+  <ellipse cx="70" cy="190" rx="16" ry="12" fill="#D4A5AD"/>
+  <ellipse cx="130" cy="190" rx="16" ry="12" fill="#D4A5AD"/>
+  <!-- bow -->
+  <path d="M88 128 L100 136 L112 128 L100 132Z" fill="#9B1B3A"/>
+  <circle cx="100" cy="132" r="4" fill="#C41E3A"/>
+</svg>
