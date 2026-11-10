@@ -100,4 +100,11 @@ Las figuras del rincón adorable son **ilustraciones originales** creadas para e
 
 ---
 
-Hecho con cuidado para Lia · 28 · XI
+Hecho con cuidado para Lia · 28 · XI 
+
+
+[7:18 p.m., 9/11/2026] Giussepe TC: https://music.youtube.com/watch?v=tKzIltxndOs&si=MEsfLGiy6P-jKT-n
+[7:18 p.m., 9/11/2026] Giussepe TC: https://music.youtube.com/watch?v=IZv01yy36A0&si=P7feT-qv_ZWQuoSj
+[7:18 p.m., 9/11/2026] Giussepe TC: https://music.youtube.com/watch?v=4eANPr_2OoM&si=aDlc2aVhT_nVPm50
+[7:18 p.m., 9/11/2026] Giussepe TC: https://music.youtube.com/watch?v=7RtUjmNh_ek&si=D3z9fRXMuGAEcJux
+[7:18 p.m., 9/11/2026] Giussepe TC: https://music.youtube.com/watch?v=UFNhG4_NAlQ&si=XKupVP_bMZZnm0RX
