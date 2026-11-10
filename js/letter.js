@@ -1,13 +1,16 @@
 /**
- * Interactive envelope → letter reveal.
+ * LIA — A Little World of Magic
+ * Interactive envelope → letter reveal with reset capability.
  */
 (function () {
+  "use strict";
+
+  let opened = false;
+
   function initLetter() {
     const btn = document.getElementById("envelope-btn");
     const panel = document.getElementById("letter-panel");
     if (!btn || !panel) return;
-
-    let opened = false;
 
     function open() {
       if (opened) return;
@@ -21,6 +24,7 @@
 
       setTimeout(() => {
         panel.hidden = false;
+        panel.classList.add("is-in");
         btn.classList.add("is-fading");
         const greeting = panel.querySelector(".letter-greeting");
         if (greeting) {
@@ -43,5 +47,22 @@
     });
   }
 
-  window.LiaLetter = { initLetter };
+  function resetLetter() {
+    const btn = document.getElementById("envelope-btn");
+    const panel = document.getElementById("letter-panel");
+    if (!btn || !panel) return;
+
+    opened = false;
+    btn.hidden = false;
+    btn.classList.remove("is-open", "is-fading");
+    btn.setAttribute("aria-expanded", "false");
+
+    panel.hidden = true;
+    panel.classList.remove("is-in");
+  }
+
+  window.LiaLetter = {
+    initLetter,
+    resetLetter
+  };
 })();

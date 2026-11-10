@@ -1,8 +1,22 @@
 /**
- * Reveal on scroll, parallax, active scene dots.
+ * LIA — A Little World of Magic
+ * Motion orchestration: scroll reveals, subtle parallax, keyboard navigation & scene dots.
  */
 (function () {
+  "use strict";
+
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const SCENE_IDS = [
+    "scene-welcome",
+    "scene-garden",
+    "scene-companions",
+    "scene-letter",
+    "scene-date",
+    "scene-finale"
+  ];
+
+  let currentSceneIndex = 0;
 
   function initReveals(root) {
     const scope = root || document;
@@ -22,7 +36,7 @@
           }
         });
       },
-      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.15, rootMargin: "0px 0px -6% 0px" }
     );
 
     items.forEach((el) => io.observe(el));
@@ -58,22 +72,36 @@
     update();
   }
 
-  function initSceneNav() {
-    const nav = document.querySelector(".scene-nav");
-    const dots = Array.from(document.querySelectorAll(".scene-dot"));
-    const sections = dots
-      .map((dot) => document.getElementById(dot.dataset.target))
-      .filter(Boolean);
+  function scrollToScene(target) {
+    let targetEl = null;
+    if (typeof target === "number") {
+      const id = SCENE_IDS[Math.max(0, Math.min(target, SCENE_IDS.length - 1))];
+      targetEl = document.getElementById(id);
+    } else if (typeof target === "string") {
+      targetEl = document.getElementById(target.replace("#", ""));
+    }
 
-    if (!nav || !dots.length) return;
+    if (targetEl) {
+      targetEl.scrollIntoView({
+        behavior: reduced ? "auto" : "smooth",
+        block: "start"
+      });
+    }
+  }
+
+  function initSceneNav() {
+    const dots = Array.from(document.querySelectorAll(".scene-dot"));
+    const sections = SCENE_IDS.map((id) => document.getElementById(id)).filter(Boolean);
+
+    if (!dots.length) return;
 
     dots.forEach((dot) => {
       dot.addEventListener("click", () => {
-        const target = document.getElementById(dot.dataset.target);
-        if (target) {
-          target.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
-        }
-      });
+          const targetId = dot.dataset.target;
+          if (targetId) {
+            scrollToScene(targetId);
+          }
+        });
     });
 
     const io = new IntersectionObserver(
@@ -81,24 +109,54 @@
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           const id = entry.target.id;
+          const idx = SCENE_IDS.indexOf(id);
+          if (idx !== -1) {
+            currentSceneIndex = idx;
+          }
+
           dots.forEach((dot) => {
             const active = dot.dataset.target === id;
             dot.classList.toggle("is-active", active);
-            if (active) dot.setAttribute("aria-current", "true");
-            else dot.removeAttribute("aria-current");
+            if (active) {
+              dot.setAttribute("aria-current", "true");
+            } else {
+              dot.removeAttribute("aria-current");
+            }
           });
         });
       },
-      { threshold: 0.35 }
+      { threshold: 0.45 }
     );
 
     sections.forEach((sec) => io.observe(sec));
+  }
+
+  function initKeyboardNav() {
+    window.addEventListener("keydown", (e) => {
+      // Don't intercept if focus is inside an input, button with space/enter, or textarea
+      const tag = document.activeElement ? document.activeElement.tagName.toLowerCase() : "";
+      if (tag === "input" || tag === "textarea") return;
+
+      if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        if (currentSceneIndex < SCENE_IDS.length - 1) {
+          e.preventDefault();
+          scrollToScene(currentSceneIndex + 1);
+        }
+      } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        if (currentSceneIndex > 0) {
+          e.preventDefault();
+          scrollToScene(currentSceneIndex - 1);
+        }
+      }
+    });
   }
 
   window.LiaMotion = {
     initReveals,
     initParallax,
     initSceneNav,
+    initKeyboardNav,
+    scrollToScene,
     reduced
   };
 })();
