@@ -1,151 +1,120 @@
 /**
  * LIA — A Little World of Magic
- * Main orchestration for the vertical cinematic story scroll experience.
+ * Main orchestration for the 3D book experience.
  */
 (function () {
   "use strict";
 
-  let welcomeParticles = null;
-  let gardenParticles = null;
+  let ambientParticles = null;
+  const pageReady = { 0: false, 1: false, 2: false, 3: false, 4: false };
   let finaleBurstDone = false;
 
-  function initAmbientSystems() {
-    if (!window.LiaParticles) return;
+  function initAmbient() {
+    const canvas = document.getElementById("welcome-particles");
+    if (!canvas || !window.LiaParticles) return;
+    ambientParticles = LiaParticles.createParticles(canvas, {
+      count: 38,
+      mode: "dust",
+      color: "rgba(232, 200, 140, 0.55)",
+      size: [0.6, 2.0],
+      speed: [0.08, 0.3]
+    });
+  }
 
-      // Welcome star dust
-      const welcomeCanvas = document.getElementById("welcome-particles");
-      if (welcomeCanvas) {
-        welcomeParticles = LiaParticles.createParticles(welcomeCanvas, {
-          count: 36,
-          mode: "dust",
-          color: "rgba(232, 200, 140, 0.55)",
-          size: [0.6, 2.0],
-          speed: [0.08, 0.32]
-        });
-      }
+  function preparePage(index) {
+    if (pageReady[index] || !window.LiaParticles) return;
+    pageReady[index] = true;
 
-        // Garden fireflies
-        const gardenCanvas = document.getElementById("garden-canvas");
-        if (gardenCanvas) {
-          gardenParticles = LiaParticles.createParticles(gardenCanvas, {
-            count: 24,
-            mode: "firefly",
-            color: "rgba(240, 220, 140, 0.75)",
-            size: [1.0, 2.6],
-            speed: [0.1, 0.35]
-          });
-        }
+    if (index === 0) {
+      LiaParticles.createPetals(document.getElementById("garden-petals"), 14);
+    }
+    if (index === 2 && window.LiaLetter) {
+      LiaLetter.initLetter();
+    }
+    if (index === 3) {
+      LiaParticles.createSparkles(document.getElementById("date-sparkles"), 24);
+    }
+    if (index === 4 && !finaleBurstDone) {
+      finaleBurstDone = true;
+      const layer = document.getElementById("finale-layer");
+      LiaParticles.burstConfetti(layer, 55);
+    }
+  }
 
-        // Static ambient elements
-        LiaParticles.createPetals(document.getElementById("garden-petals"), 16);
-        LiaParticles.createSparkles(document.getElementById("date-sparkles"), 26);
-      }
+  function setupMusic() {
+    const musicBtn = document.getElementById("music-toggle");
+    if (!musicBtn || !window.LiaAudio) return;
 
-      function setupFinaleObserver() {
-        const finaleSection = document.getElementById("scene-finale");
-        const finaleLayer = document.getElementById("finale-layer");
-        if (!finaleSection || !finaleLayer || !window.LiaParticles) return;
+    const iconOff = musicBtn.querySelector(".icon-music-off");
+    const iconOn = musicBtn.querySelector(".icon-music-on");
 
-        const io = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting && !finaleBurstDone) {
-                finaleBurstDone = true;
-                LiaParticles.burstConfetti(finaleLayer, 60);
-              }
-            });
-          },
-          { threshold: 0.35 }
-        );
-
-        io.observe(finaleSection);
-      }
-
-      function setupMusic() {
-        const musicBtn = document.getElementById("music-toggle");
-        if (!musicBtn || !window.LiaAudio) return;
-
-        const iconOff = musicBtn.querySelector(".icon-music-off");
-        const iconOn = musicBtn.querySelector(".icon-music-on");
-
-        musicBtn.addEventListener("click", async () => {
-          const isPlaying = await LiaAudio.toggle();
-          musicBtn.setAttribute("aria-pressed", isPlaying ? "true" : "false");
-          musicBtn.setAttribute(
-            "aria-label",
+    musicBtn.addEventListener("click", async () => {
+      const isPlaying = await LiaAudio.toggle();
+      musicBtn.setAttribute("aria-pressed", isPlaying ? "true" : "false");
+      musicBtn.setAttribute(
+        "aria-label",
         isPlaying ? "Silenciar música ambiental" : "Activar música ambiental"
-          );
+      );
 
-          if (iconOff && iconOn) {
-            if (isPlaying) {
-              iconOff.classList.add("hidden");
-              iconOn.classList.remove("hidden");
-            } else {
-              iconOff.classList.remove("hidden");
-              iconOn.classList.add("hidden");
-            }
-          }
-        });
-      }
-
-        function setupControls() {
-          // "Descubrir sorpresa" button
-          const discoverBtn = document.getElementById("discover-btn");
-          if (discoverBtn && window.LiaMotion) {
-            discoverBtn.addEventListener("click", () => {
-              LiaMotion.scrollToScene("scene-garden");
-            });
-          }
-
-          // "Volver a vivir la magia" button
-          const replayBtn = document.getElementById("replay-btn");
-          if (replayBtn) {
-            replayBtn.addEventListener("click", () => {
-              if (window.LiaLetter) {
-                LiaLetter.resetLetter();
-              }
-              if (window.LiaMotion) {
-                LiaMotion.scrollToScene("scene-welcome");
-              }
-              setTimeout(() => {
-                finaleBurstDone = false;
-              }, 1200);
-            });
-          }
+      if (iconOff && iconOn) {
+        if (isPlaying) {
+          iconOff.classList.add("hidden");
+          iconOn.classList.remove("hidden");
+        } else {
+          iconOff.classList.remove("hidden");
+          iconOn.classList.add("hidden");
         }
+      }
+    });
+  }
 
-        function init() {
-          initAmbientSystems();
-          setupFinaleObserver();
-          setupMusic();
-          setupControls();
+  function setupReplay() {
+    const replayBtn = document.getElementById("replay-btn");
+    if (!replayBtn) return;
+    replayBtn.addEventListener("click", () => {
+      if (window.LiaLetter) {
+        LiaLetter.resetLetter();
+      }
+      finaleBurstDone = false;
+      pageReady[4] = false;
+      if (window.LiaBook) {
+        LiaBook.close();
+      }
+    });
+  }
 
-            if (window.LiaLetter) {
-              LiaLetter.initLetter();
-            }
+  function init() {
+    initAmbient();
+    setupMusic();
+    setupReplay();
 
-            if (window.LiaMotion) {
-              LiaMotion.initReveals();
-              LiaMotion.initParallax();
-              LiaMotion.initSceneNav();
-              LiaMotion.initKeyboardNav();
-            }
+    if (window.LiaLetter) {
+      LiaLetter.initLetter();
+    }
 
-            window.addEventListener(
-              "resize",
-              () => {
-                welcomeParticles?.resize?.();
-                gardenParticles?.resize?.();
-              },
-              { passive: true }
-            );
+    if (window.LiaBook) {
+      LiaBook.init({
+        onOpen() {
+          preparePage(0);
+        },
+        onPage(index) {
+          preparePage(index);
+        }
+      });
+    }
 
-            document.documentElement.classList.add("is-ready");
-          }
+    window.addEventListener(
+      "resize",
+      () => ambientParticles?.resize?.(),
+      { passive: true }
+    );
 
-          if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", init);
-          } else {
-            init();
-          }
-        }) ();
+    document.documentElement.classList.add("is-ready");
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();

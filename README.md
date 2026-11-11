@@ -2,20 +2,20 @@
 
 Experiencia web premium de cumpleaños para **Lia** (28 de noviembre).
 
-No es una tarjeta convencional: es un **viaje cinematográfico vertical** — un pequeño universo de rosas, cariño y magia que se descubre escena a escena mientras se desliza.
+No es una tarjeta convencional: es un **libro digital 3D** íntimo, cinematográfico y editorial — un pequeño universo de rosas, cariño y magia que se abre página a página.
 
 ## Dirección artística
 
-**Identidad:** Romanticismo cinematográfico · editorial de lujo · jardín nocturno de rosas.
+**Identidad:** Romanticismo cinematográfico · editorial de lujo · libro encantado de rosas.
 
 | Token | Valor | Uso |
 | --- | --- | --- |
-| Night | `#1A0A10` | Fondo principal |
-| Burgundy | `#5C1227` | Profundidad, botones |
-| Ruby | `#C41E3A` | Acento floral |
+| Night | `#1A0A10` | Fondo principal del universo |
+| Burgundy | `#5C1227` | Terciopelo de la encuadernación, acentos |
+| Ruby | `#C41E3A` | Rosas y detalles florales |
 | Dusty rose | `#D4A5A5` | Textos suaves |
-| Warm cream | `#F7F0E8` | Tipografía primaria |
-| Champagne gold | `#C9A962` | Detalles preciosos |
+| Warm cream | `#F7F0E8` | Papel artesanal y tipografía primaria |
+| Champagne gold | `#C9A962` | Marcos dorados, sellos y detalles preciosos |
 
 **Tipografía**
 
@@ -25,22 +25,24 @@ No es una tarjeta convencional: es un **viaje cinematográfico vertical** — un
 
 **Recursos visuales**
 
-- Rosas, beagle, pajarito, peluchito y gatito: **ilustraciones SVG originales** creadas para esta experiencia (sin material oficial protegido).
-- Fotografías personales con tratamiento editorial cálido (ver [Fotografías](#fotografías)). Para personalizar los textos alternativos, edita los `alt` en `index.html`.
+- Rosas, beagle, pajarito, peluchito y gatito: **ilustraciones SVG originales** creadas para esta experiencia.
+- Fotografías personales de Lia con marcos editoriales y optimización WebP.
 
-## Las seis escenas
+## Experiencia del Libro
 
-1. **Bienvenida** — rosa iluminada, partículas doradas y el texto *"Lia, hay un pequeño universo preparado para ti"*. Botón **Descubrir sorpresa**.
-2. **Jardín nocturno** — capas de rosas con parallax, pétalos, luciérnagas y un recuerdo enmarcado.
-3. **Rincón de cariño** — ilustraciones originales y fotografías en una composición editorial asimétrica.
-4. **Carta** — sobre con sello de cera que se abre y revela un mensaje personalizado.
-5. **El 28** — número monumental en degradado champagne, rosas y destellos.
-6. **Celebración final** — *"FELIZ CUMPLEAÑOS, LIA"*, *"Que tu mundo siempre esté lleno de magia"*, confeti, pétalos y corazones.
+1. **Portada cerrada (3D)** — encuadernación en terciopelo noche y burdeos con marco de oro, rosa central con animación de respiración y botón **Abrir el libro**.
+2. **Apertura cinematográfica** — la tapa gira en perspectiva 3D revelando el spread a doble página.
+3. **Hoja izquierda** — dedicatoria poética *«Para Lia — Un pequeño universo»* con rosa floreciente.
+4. **Capítulo I · Jardín nocturno** — rosas rojas, lluvia de pétalos flotantes, cita emocional y recuerdo enmarcado (`moment-02.webp`).
+5. **Capítulo II · Tu rincón de cariño** — el beagle blanco soñador, el gatito travieso, el pajarito y el peluche junto a los recuerdos de Lia (`moment-01.webp`, `moment-03.webp`, `moment-04.webp`).
+6. **Capítulo III · Una carta para ti** — sobre interactivo 3D con sello de cera «L» que al tocarlo se abre y despliega la carta con dedicatoria íntima.
+7. **Capítulo IV · El 28** — número monumental en degradado champagne/rubí con flotación continua, rosas y destellos dorados titilantes.
+8. **Última página · Celebración final** — *«FELIZ CUMPLEAÑOS, LIA»*, lluvia de confeti, pétalos y corazones, recuerdos finales (`moment-05.webp`, `moment-06.webp`) y botón para cerrar y volver a abrir.
 
 ## Tecnologías
 
-- HTML5 · CSS3 · JavaScript (módulos por archivo)
-- Tailwind CSS vía CDN (configuración de tema en línea)
+- HTML5 · CSS3 3D Transforms · JavaScript nativo (módulos por archivo)
+- Tailwind CSS vía CDN
 - Sin backend, sin build
 - Compatible con **GitHub Pages**
 
@@ -58,42 +60,19 @@ Abre `http://localhost:8080`.
 ### GitHub Pages
 
 1. Sube este directorio a un repositorio.
-2. En Settings → Pages, publica la rama `main` desde la raíz (o `/docs` si lo mueves allí).
-3. La URL será `https://<usuario>.github.io/<repo>/`.
-
-Los paths son relativos; no requiere configuración extra. `.nojekyll` ya está incluido.
+2. En Settings → Pages, publica la rama `main` (o `develop`) desde la raíz.
+3. Los paths son relativos; no requiere configuración extra. `.nojekyll` ya está incluido.
 
 ## Controles
 
-- **Descubrir sorpresa** — inicia el recorrido desde la bienvenida
-- **Scroll** — navegación libre entre escenas (no se bloquea el desplazamiento)
-- **Puntos de escena** — saltar a cualquier escena (laterales en escritorio, inferiores en móvil)
-- **Flechas ← / →** — escena anterior / siguiente
-- **Música** — pad ambiental sintetizado con Web Audio, silencioso hasta que el usuario lo activa
-- **Sobre** — abre la carta
-- **Volver a vivir la magia** — reinicia el recorrido y la carta
+- **Abrir el libro** / tocar la portada — animación 3D de apertura
+- **Anterior / Siguiente** o flechas del teclado `←` / `→` — pasar hojas con efecto 3D
+- **Puntos de página** — saltar directamente a cualquier capítulo
+- **Música** — pad ambiental sintetizado con Web Audio API (opcional y controlado por el usuario)
+- **Sobre** — abre la carta interactiva con animación 3D
+- **Cerrar y volver a abrir** — reinicia el recorrido del libro y la carta
 
 Todo respeta `prefers-reduced-motion`.
-
-## Música
-
-La música es **opcional y controlada por el usuario**. Por defecto se genera un pad ambiental cálido con la Web Audio API (`js/audio.js`), sin archivos externos: no hay autoplay y la página permanece en silencio hasta pulsar el botón.
-
-### Usar una pista MP3 (opcional)
-
-Si prefieres una canción concreta, colócala en `assets/audio/birthday-music.mp3` y sustituye el pad por un reproductor `HTMLAudioElement`. La pista debe ser libre de derechos o de tu titularidad. Completa la atribución antes de publicar:
-
-| Campo | Valor |
-| --- | --- |
-| Título de la pista | _(por completar)_ |
-| Artista / autor | _(por completar)_ |
-| Fuente / sitio | _(por completar)_ |
-| URL de descarga | _(por completar)_ |
-| Licencia | _(por completar — p. ej. CC0, CC-BY, dominio público, licencia personal)_ |
-
-Fuentes recomendadas: [Pixabay Music](https://pixabay.com/music/), [Free Music Archive](https://freemusicarchive.org/), [YouTube Audio Library](https://studio.youtube.com/).
-
-> `js/external-media.js` existe como módulo opcional de integración con APIs externas y **no está cargado por `index.html`**; la experiencia funciona 100 % con recursos locales.
 
 ## Estructura
 
@@ -103,44 +82,18 @@ lia-birthday/
 ├── css/
 │   └── styles.css
 ├── js/
-│   ├── main.js           · orquestación de escenas
-│   ├── motion.js         · reveals, parallax, navegación
-│   ├── particles.js      · polvo, luciérnagas, pétalos, confeti
-│   ├── letter.js         · apertura del sobre
+│   ├── main.js           · orquestación del libro
+│   ├── book.js           · apertura 3D y pase de páginas
+│   ├── letter.js         · interactividad del sobre
+│   ├── particles.js      · polvo, pétalos, destellos, confeti
 │   ├── audio.js          · pad ambiental (Web Audio)
-│   └── external-media.js · módulo opcional no cargado
+│   └── external-media.js · módulo opcional
 ├── assets/
 │   ├── svg/              · ilustraciones originales
 │   └── lia/opt/          · fotografías optimizadas (WebP)
 ├── .nojekyll
 └── README.md
 ```
-
-## Fotografías
-
-La experiencia usa **seis fotografías** (de las siete imágenes proporcionadas) con tratamiento editorial cálido, distribuidas entre las escenas:
-
-- Jardín (`moment-02`), Rincón de cariño (`moment-01`, `moment-03`, `moment-04`) y Celebración final (`moment-05`, `moment-06`).
-- **Ubicación:** `assets/lia/opt/` (WebP). Las imágenes originales se conservan en `assets/lia/` como fuente.
-- **Optimización:** recompresión a WebP con Pillow, lado mayor ≤ 1100 px y calidad 78 (de ~3.7 MB a ~500 KB, −86 %).
-- **Carga diferida:** `loading="lazy"`, `decoding="async"` y dimensiones explícitas.
-- La imagen con marca de agua (`watermarked_img_*.webp`) no se usa, para preservar la estética premium.
-
-## Rendimiento
-
-- Fotografías recompresas a WebP (de ~3.7 MB a ~500 KB, −86 %).
-- Carga diferida y dimensiones explícitas para evitar saltos de layout.
-- Partículas en canvas pausadas cuando quedan fuera del viewport.
-- Animaciones limitadas a `transform` y `opacity`.
-- Sin dependencias de build ni de backend.
-
-## Accesibilidad
-
-- HTML semántico y enlace de salto.
-- Controles con `aria-*`, navegación por teclado (incluidas flechas ← / →) y foco visible.
-- Escenas con `aria-labelledby`; iconografía decorativa con `aria-hidden`.
-- Movimiento reducido respetado en CSS y JavaScript.
-- Contraste editorial sobre fondo nocturno.
 
 ---
 

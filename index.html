@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="LIA — A Little World of Magic. Un viaje cinematográfico de rosas, cariño y magia." />
+  <meta name="description" content="LIA — A Little World of Magic. Un libro digital de cumpleaños íntimo y cinematográfico." />
   <meta name="theme-color" content="#1A0A10" />
   <title>LIA — A Little World of Magic</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Great+Vibes&family=Outfit:wght@300;400;500&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Great+Vibes&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -41,366 +37,325 @@
   </script>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-
 <body class="bg-night text-cream font-sans antialiased overflow-x-hidden">
-  <!-- Skip navigation -->
-  <a class="skip-link" href="#scene-welcome">Saltar al contenido</a>
+  <a class="skip-link" href="#book-stage">Saltar al libro</a>
 
-    <!-- Brand Mark -->
-    <a class="brand-mark" href="#scene-welcome" aria-label="Lia — Inicio">
-      <span class="brand-mark__letter">L</span>
-      <span class="brand-mark__meta">28 · XI</span>
-    </a>
+  <!-- Audio control dock -->
+  <div class="fixed top-4 right-4 z-[80] flex items-center gap-2" role="group" aria-label="Controles de experiencia">
+    <button
+      id="music-toggle"
+      type="button"
+      class="control-btn"
+      aria-pressed="false"
+      aria-label="Activar música ambiental"
+      title="Música"
+    >
+      <svg class="icon-music-off" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M4 4l16 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <svg class="icon-music-on hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.6"/>
+      </svg>
+    </button>
+  </div>
 
-    <!-- Audio Control -->
-    <div class="control-dock" role="group" aria-label="Controles de experiencia">
-      <button id="music-toggle" type="button" class="control-btn" aria-pressed="false"
-        aria-label="Activar música ambiental" title="Música">
-        <svg class="icon-music-off" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
-            stroke-linejoin="round" />
-          <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.6" />
-          <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.6" />
-          <path d="M4 4l16 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-        </svg>
-        <svg class="icon-music-on hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M9 18V5l12-2v13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
-            stroke-linejoin="round" />
-          <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.6" />
-          <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.6" />
-        </svg>
+  <!-- Ambient star dust -->
+  <div class="world-atmosphere" aria-hidden="true">
+    <canvas id="welcome-particles" class="particle-canvas"></canvas>
+    <div class="world-vignette"></div>
+  </div>
+
+  <!-- BOOK EXPERIENCE -->
+  <div id="book-stage" class="book-stage" data-state="closed">
+    <p class="book-intro-text" id="book-intro">
+      Lia, hay un pequeño universo preparado para ti
+    </p>
+
+    <div class="book-scene" aria-label="Libro de cumpleaños de Lia">
+      <div class="book" id="magic-book">
+        <!-- Closed cover -->
+        <button
+          type="button"
+          class="book-cover"
+          id="open-book-btn"
+          aria-label="Abrir el libro de Lia"
+        >
+          <span class="book-cover__edge" aria-hidden="true"></span>
+          <span class="book-cover__front">
+            <span class="book-cover__ornament" aria-hidden="true"></span>
+            <img src="assets/svg/rose-hero.svg" alt="" class="book-cover__rose" width="140" height="184" decoding="async" />
+            <span class="book-cover__title">LIA</span>
+            <span class="book-cover__subtitle">A Little World of Magic</span>
+            <span class="book-cover__date">28 · XI</span>
+            <span class="book-cover__hint">Toca para abrir</span>
+          </span>
+          <span class="book-cover__inside" aria-hidden="true"></span>
+        </button>
+
+        <!-- Open spread -->
+        <div class="book-spread" id="book-spread" hidden>
+          <div class="book-spine" aria-hidden="true"></div>
+
+          <!-- Left page: artistic tribute -->
+          <div class="book-sheet book-sheet--left" aria-hidden="true">
+            <div class="sheet-paper sheet-paper--left">
+              <div class="sheet-decoration">
+                <img src="assets/svg/rose-bloom.svg" alt="" width="72" height="86" loading="lazy" />
+                <p class="script-line sheet-script">Para Lia</p>
+                <p class="sheet-meta">Un pequeño universo de rosas, cariño y magia</p>
+                <div class="sheet-flourish">
+                  <span class="sheet-date">28 de noviembre</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right page: interactive chapters -->
+          <div class="book-sheet book-sheet--right">
+            <div class="pages" id="book-pages">
+              <!-- PAGE 1 — Jardín nocturno -->
+              <article class="page is-active" data-page="0" id="page-garden" aria-label="Capítulo I: Jardín nocturno">
+                <div class="page-scroll">
+                  <header class="page-header">
+                    <p class="eyebrow">Capítulo I</p>
+                    <h2 class="section-title">Un jardín que florece de noche</h2>
+                    <p class="section-lead">
+                      Lia, entre rosas rojas y luces tímidas, el aire guarda secretos suaves que preparé solo para ti.
+                    </p>
+                  </header>
+
+                  <div class="rose-field rose-field--page" aria-hidden="true">
+                    <img src="assets/svg/rose-bloom.svg" alt="" class="field-rose field-rose--a" width="120" height="144" loading="lazy" />
+                    <img src="assets/svg/rose-bloom.svg" alt="" class="field-rose field-rose--b" width="150" height="180" loading="lazy" />
+                    <img src="assets/svg/rose-bloom.svg" alt="" class="field-rose field-rose--d" width="130" height="156" loading="lazy" />
+                  </div>
+
+                  <div class="petal-layer" id="garden-petals" aria-hidden="true"></div>
+                  <p class="script-line garden-quote-inline">“Donde hay rosas, Lia, hay magia que se queda contigo.”</p>
+
+                  <figure class="book-photo-frame">
+                    <div class="print__frame">
+                      <img
+                        src="assets/lia/opt/moment-02.webp"
+                        alt="Lia sonriendo con dulzura en un instante mágico"
+                        width="1100"
+                        height="825"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <figcaption class="script-line">Un recuerdo entre rosas</figcaption>
+                  </figure>
+                </div>
+              </article>
+
+              <!-- PAGE 2 — Compañeros y Rincón de cariño -->
+              <article class="page" data-page="1" id="page-companions" aria-label="Capítulo II: Rincón de cariño" hidden>
+                <div class="page-scroll">
+                  <header class="page-header">
+                    <p class="eyebrow">Capítulo II</p>
+                    <h2 class="section-title">Tu rincón de cariño</h2>
+                    <p class="section-lead">
+                      Lia, tu rincón de cariño está lleno de un beagle soñador, un pajarito travieso, peluchitos y gatitos que siempre te acompañan.
+                    </p>
+                  </header>
+
+                  <div class="companion-stage companion-stage--page">
+                    <figure class="companion-card companion-card--hero">
+                      <img src="assets/svg/companion-beagle.svg" alt="Beagle blanco soñador" width="160" height="174" loading="lazy" />
+                      <figcaption><span class="script-line">El guardián suave</span></figcaption>
+                    </figure>
+                    <figure class="companion-card">
+                      <img src="assets/svg/companion-bird.svg" alt="Pajarito amarillo alegre" width="90" height="90" loading="lazy" />
+                      <figcaption><span class="script-line">El pajarito</span></figcaption>
+                    </figure>
+                    <figure class="companion-card">
+                      <img src="assets/svg/plush.svg" alt="Peluche rosado tierno" width="100" height="115" loading="lazy" />
+                      <figcaption><span class="script-line">Peluchito</span></figcaption>
+                    </figure>
+                    <figure class="companion-card companion-card--hero">
+                      <img src="assets/svg/kitten.svg" alt="Gatito crema curioso" width="120" height="131" loading="lazy" />
+                      <figcaption><span class="script-line">Gatito</span></figcaption>
+                    </figure>
+                  </div>
+
+                  <!-- Fotos en el rincón de cariño -->
+                  <div class="book-photo-grid">
+                    <figure class="book-photo-frame">
+                      <div class="print__frame">
+                        <img src="assets/lia/opt/moment-01.webp" alt="Lia iluminada por una mirada llena de ternura" width="1024" height="768" loading="lazy" decoding="async" />
+                      </div>
+                      <figcaption class="script-line">Tu luz suave</figcaption>
+                    </figure>
+                    <figure class="book-photo-frame">
+                      <div class="print__frame">
+                        <img src="assets/lia/opt/moment-03.webp" alt="Lia en un momento sereno y lleno de paz" width="1100" height="825" loading="lazy" decoding="async" />
+                      </div>
+                      <figcaption class="script-line">Instantes de paz</figcaption>
+                    </figure>
+                    <figure class="book-photo-frame">
+                      <div class="print__frame">
+                        <img src="assets/lia/opt/moment-04.webp" alt="La sonrisa espontánea y hermosa de Lia" width="1100" height="825" loading="lazy" decoding="async" />
+                      </div>
+                      <figcaption class="script-line">Tu sonrisa bonita</figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </article>
+
+              <!-- PAGE 3 — La Carta -->
+              <article class="page" data-page="2" id="page-letter" aria-label="Capítulo III: Una carta para ti" hidden>
+                <div class="page-scroll">
+                  <header class="page-header">
+                    <p class="eyebrow">Capítulo III</p>
+                    <h2 class="section-title">Una carta para ti</h2>
+                    <p class="section-lead">Toca el sobre. Déjalo abrirse. Lee despacio.</p>
+                  </header>
+
+                  <div class="letter-stage">
+                    <button
+                      id="envelope-btn"
+                      type="button"
+                      class="envelope"
+                      aria-expanded="false"
+                      aria-controls="letter-panel"
+                      aria-label="Abrir carta de cumpleaños para Lia"
+                    >
+                      <span class="sr-only">Abrir carta de cumpleaños</span>
+                      <span class="envelope__flap" aria-hidden="true"></span>
+                      <span class="envelope__body" aria-hidden="true">
+                        <span class="envelope__seal">L</span>
+                      </span>
+                      <span class="envelope__hint" aria-hidden="true">Toca para abrir</span>
+                    </button>
+
+                    <article id="letter-panel" class="letter-panel" hidden aria-label="Mensaje de cumpleaños para Lia">
+                      <p class="letter-date">28 de noviembre</p>
+                      <h3 class="letter-greeting script-line">Querida Lia,</h3>
+                      <div class="letter-body">
+                        <p>
+                          Hay días que brillan distinto. Hoy es uno de ellos: el día en que el mundo se detiene un segundo para celebrarte.
+                        </p>
+                        <p>
+                          Que este pequeño universo te recuerde lo valiosa que eres — tu ternura, tu magia, la forma en que llenas de luz lo ordinario.
+                        </p>
+                        <p>
+                          Que tu año nuevo personal traiga rosas, risas, abrazos suaves y todas las sorpresas bonitas que mereces.
+                        </p>
+                      </div>
+                      <p class="letter-signoff script-line">Con todo el cariño del mundo,</p>
+                      <p class="letter-from">Tu pequeño universo</p>
+                      <div class="letter-seal" aria-hidden="true">L</div>
+                    </article>
+                  </div>
+                </div>
+              </article>
+
+              <!-- PAGE 4 — 28 de noviembre -->
+              <article class="page" data-page="3" id="page-date" aria-label="Capítulo IV: 28 de noviembre" hidden>
+                <div class="page-scroll">
+                  <header class="page-header">
+                    <p class="eyebrow">Capítulo IV</p>
+                    <h2 class="section-title">El día marcado en oro</h2>
+                  </header>
+
+                  <div class="date-composition date-composition--page">
+                    <div class="sparkle-field" id="date-sparkles" aria-hidden="true"></div>
+                    <div class="date-number" aria-label="28 de noviembre">
+                      <span class="date-digit">2</span>
+                      <span class="date-digit">8</span>
+                    </div>
+                    <div class="date-ornament" aria-hidden="true">
+                      <img src="assets/svg/rose-bloom.svg" alt="" class="date-rose date-rose--left" width="80" height="96" loading="lazy" />
+                      <img src="assets/svg/rose-bloom.svg" alt="" class="date-rose date-rose--right" width="80" height="96" loading="lazy" />
+                    </div>
+                    <p class="date-month script-line">noviembre</p>
+                    <p class="date-caption">El día en que Lia hace magia con solo existir.</p>
+                  </div>
+                </div>
+              </article>
+
+              <!-- PAGE 5 — Celebración final -->
+              <article class="page" data-page="4" id="page-finale" aria-label="Última página: Celebración" hidden>
+                <div class="page-scroll page-scroll--finale">
+                  <div class="finale-atmosphere" id="finale-layer" aria-hidden="true"></div>
+                  <p class="eyebrow">Última página</p>
+                  <h2 class="finale-title">Feliz cumpleaños, Lia</h2>
+                  <p class="finale-sub script-line">Que tu mundo siempre esté lleno de magia</p>
+
+                  <div class="finale-rose" aria-hidden="true">
+                    <img src="assets/svg/rose-hero.svg" alt="" width="130" height="170" loading="lazy" />
+                  </div>
+
+                  <!-- Fotos de celebración final -->
+                  <div class="book-photo-grid book-photo-grid--finale">
+                    <figure class="book-photo-frame">
+                      <div class="print__frame">
+                        <img src="assets/lia/opt/moment-05.webp" alt="Lia compartiendo un momento radiante" width="1100" height="825" loading="lazy" decoding="async" />
+                      </div>
+                      <figcaption class="script-line">Siempre radiante</figcaption>
+                    </figure>
+                    <figure class="book-photo-frame">
+                      <div class="print__frame">
+                        <img src="assets/lia/opt/moment-06.webp" alt="La mirada cómplice y cariñosa de Lia" width="1100" height="825" loading="lazy" decoding="async" />
+                      </div>
+                      <figcaption class="script-line">Un abrazo al corazón</figcaption>
+                    </figure>
+                  </div>
+
+                  <button id="replay-btn" type="button" class="btn-ghost">
+                    Cerrar y volver a abrir
+                  </button>
+                </div>
+              </article>
+            </div>
+
+            <!-- Turning page overlay for 3D flip animation -->
+            <div class="page-flip" id="page-flip" aria-hidden="true">
+              <div class="page-flip__face page-flip__face--front"></div>
+              <div class="page-flip__face page-flip__face--back"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA button to open book -->
+    <div class="book-cta" id="book-cta">
+      <button id="discover-btn" type="button" class="btn-primary">
+        <span>Abrir el libro</span>
+        <span class="btn-sheen" aria-hidden="true"></span>
       </button>
     </div>
 
-    <!-- Scene navigation dots -->
-    <nav class="scene-nav" aria-label="Navegación de escenas">
-      <ol class="scene-nav__list">
-        <li><button type="button" class="scene-dot is-active" data-target="scene-welcome"
-            aria-label="Escena 1: Bienvenida" aria-current="true"></button></li>
-        <li><button type="button" class="scene-dot" data-target="scene-garden"
-            aria-label="Escena 2: Jardín nocturno"></button></li>
-        <li><button type="button" class="scene-dot" data-target="scene-companions"
-            aria-label="Escena 3: Rincón de cariño"></button></li>
-        <li><button type="button" class="scene-dot" data-target="scene-letter" aria-label="Escena 4: Carta"></button>
-        </li>
-        <li><button type="button" class="scene-dot" data-target="scene-date"
-            aria-label="Escena 5: El 28 de noviembre"></button></li>
-        <li><button type="button" class="scene-dot" data-target="scene-finale"
-            aria-label="Escena 6: Celebración final"></button></li>
+    <!-- Book chapter / page navigation -->
+    <nav class="book-nav" id="book-nav" hidden aria-label="Páginas del libro">
+      <button type="button" class="book-nav__btn" id="prev-page" aria-label="Página anterior" disabled>
+        <span aria-hidden="true">‹</span> Anterior
+      </button>
+      <ol class="book-nav__dots" id="page-dots">
+        <li><button type="button" class="scene-dot is-active" data-page="0" aria-label="Capítulo 1" aria-current="true"></button></li>
+        <li><button type="button" class="scene-dot" data-page="1" aria-label="Capítulo 2"></button></li>
+        <li><button type="button" class="scene-dot" data-page="2" aria-label="Capítulo 3"></button></li>
+        <li><button type="button" class="scene-dot" data-page="3" aria-label="Capítulo 4"></button></li>
+        <li><button type="button" class="scene-dot" data-page="4" aria-label="Última página"></button></li>
       </ol>
+      <button type="button" class="book-nav__btn" id="next-page" aria-label="Página siguiente">
+        Siguiente <span aria-hidden="true">›</span>
+      </button>
     </nav>
-
-      <!-- =========================================================
-       SCENE 1 · BIENVENIDA
-       ========================================================= -->
-      <section id="scene-welcome" class="scene scene--welcome" aria-labelledby="welcome-heading">
-        <div class="scene-glow scene-glow--welcome" aria-hidden="true"></div>
-        <canvas id="welcome-particles" class="particle-canvas" aria-hidden="true"></canvas>
-        <div class="grain" aria-hidden="true"></div>
-
-            <div class="welcome-inner">
-              <p class="eyebrow reveal">Un pequeño universo</p>
-
-              <div class="welcome-rose reveal" style="--reveal-delay: 0.15s">
-                <span class="welcome-rose__halo" aria-hidden="true"></span>
-                <img src="assets/svg/rose-hero.svg" alt="Rosa roja iluminada" width="280" height="368"
-                  decoding="async" />
-              </div>
-
-              <h1 id="welcome-heading" class="welcome-title reveal" style="--reveal-delay: 0.3s">
-                Lia, hay un pequeño universo preparado para ti
-              </h1>
-
-              <div class="reveal" style="--reveal-delay: 0.45s">
-                <button id="discover-btn" type="button" class="btn-primary">
-                  <span>Descubrir sorpresa</span>
-                  <span class="btn-sheen" aria-hidden="true"></span>
-                </button>
-              </div>
-            </div>
-
-            <div class="scroll-cue" aria-hidden="true">
-              <span>Desliza</span>
-              <span class="scroll-cue__line"></span>
-            </div>
-      </section>
-
-      <!-- =========================================================
-       SCENE 2 · JARDÍN NOCTURNO
-       ========================================================= -->
-      <section id="scene-garden" class="scene scene--garden" aria-labelledby="garden-heading">
-        <div class="scene-glow scene-glow--garden" aria-hidden="true"></div>
-        <canvas id="garden-canvas" class="particle-canvas" aria-hidden="true"></canvas>
-        <div class="petal-layer" id="garden-petals" aria-hidden="true"></div>
-        <div class="grain" aria-hidden="true"></div>
-
-        <!-- Parallax rose layers in background -->
-        <div class="garden-field" aria-hidden="true">
-          <img src="assets/svg/rose-bloom.svg" alt="" class="field-rose field-rose--a parallax" data-speed="0.12"
-            width="150" height="180" loading="lazy" />
-          <img src="assets/svg/rose-bloom.svg" alt="" class="field-rose field-rose--b parallax" data-speed="-0.08"
-            width="210" height="252" loading="lazy" />
-          <img src="assets/svg/rose-bloom.svg" alt="" class="field-rose field-rose--c parallax" data-speed="0.16"
-            width="180" height="216" loading="lazy" />
-          <img src="assets/svg/rose-bloom.svg" alt="" class="field-rose field-rose--d parallax" data-speed="-0.12"
-            width="230" height="276" loading="lazy" />
-          <img src="assets/svg/rose-bloom.svg" alt="" class="field-rose field-rose--e parallax" data-speed="0.06"
-            width="160" height="192" loading="lazy" />
-        </div>
-
-        <div class="scene-inner garden-inner">
-          <header class="scene-header reveal">
-            <p class="eyebrow">Capítulo I</p>
-            <h2 id="garden-heading" class="section-title">Un jardín que florece de noche</h2>
-            <p class="section-lead">
-              Lia, entre rosas rojas y luces tímidas, el aire guarda secretos suaves que preparé solo para ti.
-            </p>
-          </header>
-
-          <p class="script-line garden-quote reveal" style="--reveal-delay: 0.2s">
-            “Donde hay rosas, Lia, hay magia que se queda contigo.”
-          </p>
-
-          <figure class="print print--garden reveal" style="--reveal-delay: 0.35s">
-            <div class="print__frame">
-              <img src="assets/lia/opt/moment-02.webp" alt="Lia sonriendo con dulzura en un instante mágico"
-                width="1100" height="825" loading="lazy" decoding="async" />
-            </div>
-            <figcaption class="script-line">Un recuerdo entre rosas</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <!-- =========================================================
-       SCENE 3 · RINCÓN DE CARIÑO
-       ========================================================= -->
-      <section id="scene-companions" class="scene scene--companions" aria-labelledby="companions-heading">
-        <div class="scene-glow scene-glow--companions" aria-hidden="true"></div>
-        <div class="grain" aria-hidden="true"></div>
-
-        <div class="scene-inner">
-          <header class="scene-header reveal">
-            <p class="eyebrow">Capítulo II</p>
-            <h2 id="companions-heading" class="section-title">Tu rincón de cariño</h2>
-            <p class="section-lead">
-              Lia, tu rincón de cariño está lleno de un beagle soñador, un pajarito travieso, peluchitos y gatitos que
-              siempre te acompañan.
-            </p>
-          </header>
-
-          <div class="companion-gallery">
-            <!-- Foto 1 (moment-01) -->
-            <figure class="print print--a reveal" style="--reveal-delay: 0.1s">
-              <div class="print__frame">
-                <img src="assets/lia/opt/moment-01.webp" alt="Lia iluminada por una mirada llena de ternura"
-                  width="1024" height="768" loading="lazy" decoding="async" />
-              </div>
-              <figcaption class="script-line">Tu luz suave</figcaption>
-            </figure>
-
-            <!-- Beagle -->
-            <figure class="companion companion--beagle reveal" style="--reveal-delay: 0.2s">
-              <span class="companion__halo" aria-hidden="true"></span>
-              <img src="assets/svg/companion-beagle.svg" alt="Ilustración de un beagle blanco soñador" width="210"
-                height="228" loading="lazy" />
-              <figcaption class="script-line">El guardián suave</figcaption>
-            </figure>
-
-            <!-- Foto 3 (moment-03) -->
-            <figure class="print print--b reveal" style="--reveal-delay: 0.3s">
-              <div class="print__frame">
-                <img src="assets/lia/opt/moment-03.webp" alt="Lia en un momento sereno y lleno de paz" width="1100"
-                  height="825" loading="lazy" decoding="async" />
-              </div>
-              <figcaption class="script-line">Instantes de paz</figcaption>
-            </figure>
-
-            <!-- Gatito -->
-            <figure class="companion companion--kitten reveal" style="--reveal-delay: 0.4s">
-              <span class="companion__halo" aria-hidden="true"></span>
-              <img src="assets/svg/kitten.svg" alt="Ilustración de un gatito crema tierno" width="140" height="153"
-                loading="lazy" />
-              <figcaption class="script-line">El gatito travieso</figcaption>
-            </figure>
-
-            <!-- Foto 4 (moment-04) -->
-            <figure class="print print--c reveal" style="--reveal-delay: 0.5s">
-              <div class="print__frame">
-                <img src="assets/lia/opt/moment-04.webp" alt="La sonrisa espontánea y hermosa de Lia" width="1100"
-                  height="825" loading="lazy" decoding="async" />
-              </div>
-              <figcaption class="script-line">Tu sonrisa bonita</figcaption>
-            </figure>
-
-            <!-- Stack: pajarito y peluche -->
-            <div class="companion-stack reveal" style="--reveal-delay: 0.6s">
-              <figure class="companion">
-                <img src="assets/svg/companion-bird.svg" alt="Ilustración de un pajarito amarillo alegre" width="100"
-                  height="100" loading="lazy" />
-                <figcaption class="script-line">El pajarito</figcaption>
-              </figure>
-              <figure class="companion">
-                <img src="assets/svg/plush.svg" alt="Ilustración de un peluchito tierno" width="120" height="138"
-                  loading="lazy" />
-                <figcaption class="script-line">Peluchito</figcaption>
-              </figure>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- =========================================================
-       SCENE 4 · LA CARTA
-       ========================================================= -->
-      <section id="scene-letter" class="scene scene--letter" aria-labelledby="letter-heading">
-        <div class="scene-glow scene-glow--letter" aria-hidden="true"></div>
-        <div class="grain" aria-hidden="true"></div>
-
-        <div class="scene-inner letter-inner">
-          <header class="scene-header reveal">
-            <p class="eyebrow">Capítulo III</p>
-            <h2 id="letter-heading" class="section-title">Una carta para ti</h2>
-            <p class="section-lead">
-              Toca el sobre. Déjalo abrirse. Lee despacio.
-            </p>
-          </header>
-
-          <div class="letter-stage reveal" style="--reveal-delay: 0.2s">
-            <!-- Interactive Envelope -->
-            <button
-              id="envelope-btn"
-              type="button"
-              class="envelope"
-              aria-expanded="false"
-              aria-controls="letter-panel"
-              aria-label="Abrir carta de cumpleaños para Lia"
-            >
-              <span class="envelope__shadow" aria-hidden="true"></span>
-              <span class="envelope__back" aria-hidden="true"></span>
-              <span class="envelope__paper" aria-hidden="true">
-                <span class="envelope__paper-lines"></span>
-              </span>
-              <span class="envelope__front" aria-hidden="true"></span>
-              <span class="envelope__flap" aria-hidden="true"></span>
-              <span class="envelope__seal" aria-hidden="true">L</span>
-              <span class="envelope__hint" aria-hidden="true">Toca para abrir</span>
-            </button>
-
-            <!-- Unfolded Letter Panel -->
-            <article id="letter-panel" class="letter-panel" hidden aria-label="Mensaje de cumpleaños para Lia">
-              <p class="letter-date">28 de noviembre</p>
-              <h3 class="letter-greeting script-line">Querida Lia,</h3>
-              <div class="letter-body">
-                <p>
-                  Hay días que brillan distinto. Hoy es uno de ellos: el día en que el mundo se detiene un segundo para celebrarte.
-                </p>
-                <p>
-                  Que este pequeño universo te recuerde lo valiosa que eres — tu ternura, tu magia, la forma en que llenas de luz lo ordinario.
-                </p>
-                <p>
-                  Que tu año nuevo personal traiga rosas, risas, abrazos suaves y todas las sorpresas bonitas que mereces.
-                </p>
-              </div>
-              <p class="letter-signoff script-line">Con todo el cariño del mundo,</p>
-              <p class="letter-from">Tu pequeño universo</p>
-              <div class="letter-seal" aria-hidden="true">L</div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-          <!-- =========================================================
-       SCENE 5 · EL 28
-       ========================================================= -->
-          <section id="scene-date" class="scene scene--date" aria-labelledby="date-heading">
-            <div class="scene-glow scene-glow--date" aria-hidden="true"></div>
-            <div class="sparkle-field" id="date-sparkles" aria-hidden="true"></div>
-            <div class="grain" aria-hidden="true"></div>
-
-            <div class="scene-inner date-inner">
-              <header class="scene-header reveal">
-                <p class="eyebrow">Capítulo IV</p>
-                <h2 id="date-heading" class="section-title">El día marcado en oro</h2>
-              </header>
-
-                    <div class="date-composition reveal" style="--reveal-delay: 0.15s">
-                      <div class="date-rose date-rose--left" aria-hidden="true">
-                        <img src="assets/svg/rose-bloom.svg" alt="" width="170" height="204" loading="lazy" />
-                      </div>
-
-              <div class="date-number" aria-label="28 de noviembre">
-                <span class="date-digit">2</span>
-                <span class="date-digit">8</span>
-              </div>
-
-              <div class="date-rose date-rose--right" aria-hidden="true">
-                <img src="assets/svg/rose-bloom.svg" alt="" width="170" height="204" loading="lazy" />
-              </div>
-
-            <p class="date-month script-line">noviembre</p>
-            <p class="date-caption">El día en que Lia hace magia con solo existir.</p>
-        </div>
-      </div>
-      </section>
-
-      <!-- =========================================================
-       SCENE 6 · CELEBRACIÓN FINAL
-       ========================================================= -->
-      <section id="scene-finale" class="scene scene--finale" aria-labelledby="finale-heading">
-        <div class="scene-glow scene-glow--finale" aria-hidden="true"></div>
-        <div class="finale-atmosphere" id="finale-layer" aria-hidden="true"></div>
-        <div class="grain" aria-hidden="true"></div>
-
-        <div class="scene-inner finale-inner">
-          <header class="scene-header reveal">
-            <p class="eyebrow">Último capítulo</p>
-            <h2 id="finale-heading" class="finale-title">
-              <span class="finale-title__top">FELIZ CUMPLEAÑOS</span>
-              <span class="finale-title__name">Lia</span>
-            </h2>
-            <p class="finale-sub script-line">Que tu mundo siempre esté lleno de magia</p>
-          </header>
-
-          <div class="finale-memories reveal" style="--reveal-delay: 0.25s">
-            <!-- Foto 5 (moment-05) -->
-            <figure class="print print--finale-a">
-              <div class="print__frame">
-                <img src="assets/lia/opt/moment-05.webp" alt="Lia compartiendo un momento radiante" width="1100"
-                  height="825" loading="lazy" decoding="async" />
-              </div>
-          <figcaption class="script-line">Siempre radiante</figcaption>
-          </figure>
-
-          <!-- Foto 6 (moment-06) -->
-          <figure class="print print--finale-b">
-            <div class="print__frame">
-              <img src="assets/lia/opt/moment-06.webp" alt="La mirada cómplice y cariñosa de Lia" width="1100"
-                height="825" loading="lazy" decoding="async" />
-            </div>
-            <figcaption class="script-line">Un abrazo al corazón</figcaption>
-          </figure>
-        </div>
-
-      <div class="reveal" style="--reveal-delay: 0.4s">
-        <button id="replay-btn" type="button" class="btn-ghost">
-          Volver a vivir la magia
-        </button>
-      </div>
-
-      <footer class="site-footer reveal" style="--reveal-delay: 0.5s">
-        <span class="site-footer__monogram script-line" aria-hidden="true">L</span>
-        <p>Hecho con cuidado para Lia</p>
-        <p>28 · XI</p>
-      </footer>
-    </div>
-    </section>
+  </div>
 
   <!-- Scripts -->
   <script src="js/audio.js" defer></script>
   <script src="js/particles.js" defer></script>
   <script src="js/letter.js" defer></script>
-  <script src="js/motion.js" defer></script>
+  <script src="js/book.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
-
 </html>
