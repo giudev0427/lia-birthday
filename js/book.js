@@ -1,7 +1,10 @@
 /**
- * Book open + page-turn experience
+ * LIA — A Little World of Magic
+ * Book open + 3D page-turn experience
  */
 (function () {
+  "use strict";
+
   const reduced = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const Book = {
@@ -55,6 +58,9 @@
 
       document.addEventListener("keydown", (e) => {
         if (!this.opened || this.turning) return;
+        const tag = document.activeElement ? document.activeElement.tagName.toLowerCase() : "";
+        if (tag === "input" || tag === "textarea") return;
+
         if (e.key === "ArrowRight" || e.key === "PageDown") {
           e.preventDefault();
           this.goTo(this.index + 1);
@@ -90,6 +96,31 @@
       }, openDelay);
     },
 
+    close() {
+      if (!this.opened || !this.book) return;
+      this.opened = false;
+      this.index = 0;
+
+      if (this.nav) this.nav.hidden = true;
+      if (this.coverBtn) this.coverBtn.hidden = false;
+
+      this.book.classList.remove("is-open", "is-opening");
+      this.stage.dataset.state = "closed";
+
+      if (this.spread) this.spread.hidden = true;
+
+      this.pages.forEach((p, i) => {
+        p.classList.toggle("is-active", i === 0);
+        p.hidden = i !== 0;
+      });
+
+      this.dots.forEach((dot, i) => {
+        dot.classList.toggle("is-active", i === 0);
+        if (i === 0) dot.setAttribute("aria-current", "true");
+        else dot.removeAttribute("aria-current");
+      });
+    },
+
     showPage(index, animate, direction = 1) {
       if (index < 0 || index >= this.pages.length) return;
       const prev = this.index;
@@ -121,7 +152,7 @@
             : 'Siguiente <span aria-hidden="true">›</span>';
       }
 
-      // Focus page for a11y
+      // Focus page for a11y & scroll to top of chapter
       const activePage = this.pages[index];
       if (activePage) {
         activePage.setAttribute("tabindex", "-1");
@@ -146,8 +177,7 @@
 
       this.turning = true;
       this.flip.classList.remove("is-turning-forward", "is-turning-back");
-      // Force reflow
-      void this.flip.offsetWidth;
+      void this.flip.offsetWidth; // force reflow
       this.flip.classList.add("is-animating");
       this.flip.classList.add(direction > 0 ? "is-turning-forward" : "is-turning-back");
 
@@ -165,3 +195,4 @@
 
   window.LiaBook = Book;
 })();
+

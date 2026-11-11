@@ -40,6 +40,7 @@
 <body class="bg-night text-cream font-sans antialiased overflow-x-hidden">
   <a class="skip-link" href="#book-stage">Saltar al libro</a>
 
+  <!-- Audio control dock -->
   <div class="fixed top-4 right-4 z-[80] flex items-center gap-2" role="group" aria-label="Controles de experiencia">
     <button
       id="music-toggle"
@@ -63,6 +64,7 @@
     </button>
   </div>
 
+  <!-- Ambient star dust -->
   <div class="world-atmosphere" aria-hidden="true">
     <canvas id="welcome-particles" class="particle-canvas"></canvas>
     <div class="world-vignette"></div>
@@ -99,77 +101,122 @@
         <div class="book-spread" id="book-spread" hidden>
           <div class="book-spine" aria-hidden="true"></div>
 
+          <!-- Left page: artistic tribute -->
           <div class="book-sheet book-sheet--left" aria-hidden="true">
             <div class="sheet-paper sheet-paper--left">
               <div class="sheet-decoration">
                 <img src="assets/svg/rose-bloom.svg" alt="" width="72" height="86" loading="lazy" />
                 <p class="script-line sheet-script">Para Lia</p>
-                <p class="sheet-meta">Un pequeño universo</p>
+                <p class="sheet-meta">Un pequeño universo de rosas, cariño y magia</p>
+                <div class="sheet-flourish">
+                  <span class="sheet-date">28 de noviembre</span>
+                </div>
               </div>
             </div>
           </div>
 
+          <!-- Right page: interactive chapters -->
           <div class="book-sheet book-sheet--right">
             <div class="pages" id="book-pages">
-              <!-- PAGE 1 — Jardín -->
-              <article class="page is-active" data-page="0" id="page-garden" aria-label="Página 1: Jardín">
+              <!-- PAGE 1 — Jardín nocturno -->
+              <article class="page is-active" data-page="0" id="page-garden" aria-label="Capítulo I: Jardín nocturno">
                 <div class="page-scroll">
                   <header class="page-header">
                     <p class="eyebrow">Capítulo I</p>
                     <h2 class="section-title">Un jardín que florece de noche</h2>
                     <p class="section-lead">
-                      Entre rosas rojas y luces tímidas, el aire guarda secretos suaves solo para ti.
+                      Lia, entre rosas rojas y luces tímidas, el aire guarda secretos suaves que preparé solo para ti.
                     </p>
                   </header>
+
                   <div class="rose-field rose-field--page" aria-hidden="true">
                     <img src="assets/svg/rose-bloom.svg" alt="" class="field-rose field-rose--a" width="120" height="144" loading="lazy" />
                     <img src="assets/svg/rose-bloom.svg" alt="" class="field-rose field-rose--b" width="150" height="180" loading="lazy" />
                     <img src="assets/svg/rose-bloom.svg" alt="" class="field-rose field-rose--d" width="130" height="156" loading="lazy" />
                   </div>
+
                   <div class="petal-layer" id="garden-petals" aria-hidden="true"></div>
-                  <p class="script-line garden-quote-inline">“Donde hay rosas, hay magia que se queda.”</p>
+                  <p class="script-line garden-quote-inline">“Donde hay rosas, Lia, hay magia que se queda contigo.”</p>
+
+                  <figure class="book-photo-frame">
+                    <div class="print__frame">
+                      <img
+                        src="assets/lia/opt/moment-02.webp"
+                        alt="Lia sonriendo con dulzura en un instante mágico"
+                        width="1100"
+                        height="825"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <figcaption class="script-line">Un recuerdo entre rosas</figcaption>
+                  </figure>
                 </div>
               </article>
 
-              <!-- PAGE 2 — Compañeros -->
-              <article class="page" data-page="1" id="page-companions" aria-label="Página 2: Compañeros" hidden>
+              <!-- PAGE 2 — Compañeros y Rincón de cariño -->
+              <article class="page" data-page="1" id="page-companions" aria-label="Capítulo II: Rincón de cariño" hidden>
                 <div class="page-scroll">
                   <header class="page-header">
                     <p class="eyebrow">Capítulo II</p>
                     <h2 class="section-title">Tu rincón de cariño</h2>
                     <p class="section-lead">
-                      Un beagle soñador, un pajarito travieso, peluchitos y gatitos.
+                      Lia, tu rincón de cariño está lleno de un beagle soñador, un pajarito travieso, peluchitos y gatitos que siempre te acompañan.
                     </p>
                   </header>
+
                   <div class="companion-stage companion-stage--page">
                     <figure class="companion-card companion-card--hero">
-                      <img src="assets/svg/companion-beagle.svg" alt="Beagle blanco soñador" width="180" height="195" loading="lazy" />
+                      <img src="assets/svg/companion-beagle.svg" alt="Beagle blanco soñador" width="160" height="174" loading="lazy" />
                       <figcaption><span class="script-line">El guardián suave</span></figcaption>
                     </figure>
                     <figure class="companion-card">
-                      <img src="assets/svg/companion-bird.svg" alt="Pajarito amarillo" width="100" height="100" loading="lazy" />
+                      <img src="assets/svg/companion-bird.svg" alt="Pajarito amarillo alegre" width="90" height="90" loading="lazy" />
                       <figcaption><span class="script-line">El pajarito</span></figcaption>
                     </figure>
                     <figure class="companion-card">
-                      <img src="assets/svg/plush.svg" alt="Peluche rosado" width="120" height="138" loading="lazy" />
+                      <img src="assets/svg/plush.svg" alt="Peluche rosado tierno" width="100" height="115" loading="lazy" />
                       <figcaption><span class="script-line">Peluchito</span></figcaption>
                     </figure>
-                    <figure class="companion-card">
-                      <img src="assets/svg/kitten.svg" alt="Gatito crema" width="130" height="142" loading="lazy" />
+                    <figure class="companion-card companion-card--hero">
+                      <img src="assets/svg/kitten.svg" alt="Gatito crema curioso" width="120" height="131" loading="lazy" />
                       <figcaption><span class="script-line">Gatito</span></figcaption>
+                    </figure>
+                  </div>
+
+                  <!-- Fotos en el rincón de cariño -->
+                  <div class="book-photo-grid">
+                    <figure class="book-photo-frame">
+                      <div class="print__frame">
+                        <img src="assets/lia/opt/moment-01.webp" alt="Lia iluminada por una mirada llena de ternura" width="1024" height="768" loading="lazy" decoding="async" />
+                      </div>
+                      <figcaption class="script-line">Tu luz suave</figcaption>
+                    </figure>
+                    <figure class="book-photo-frame">
+                      <div class="print__frame">
+                        <img src="assets/lia/opt/moment-03.webp" alt="Lia en un momento sereno y lleno de paz" width="1100" height="825" loading="lazy" decoding="async" />
+                      </div>
+                      <figcaption class="script-line">Instantes de paz</figcaption>
+                    </figure>
+                    <figure class="book-photo-frame">
+                      <div class="print__frame">
+                        <img src="assets/lia/opt/moment-04.webp" alt="La sonrisa espontánea y hermosa de Lia" width="1100" height="825" loading="lazy" decoding="async" />
+                      </div>
+                      <figcaption class="script-line">Tu sonrisa bonita</figcaption>
                     </figure>
                   </div>
                 </div>
               </article>
 
-              <!-- PAGE 3 — Carta -->
-              <article class="page" data-page="2" id="page-letter" aria-label="Página 3: Carta" hidden>
+              <!-- PAGE 3 — La Carta -->
+              <article class="page" data-page="2" id="page-letter" aria-label="Capítulo III: Una carta para ti" hidden>
                 <div class="page-scroll">
                   <header class="page-header">
                     <p class="eyebrow">Capítulo III</p>
                     <h2 class="section-title">Una carta para ti</h2>
                     <p class="section-lead">Toca el sobre. Déjalo abrirse. Lee despacio.</p>
                   </header>
+
                   <div class="letter-stage">
                     <button
                       id="envelope-btn"
@@ -177,49 +224,49 @@
                       class="envelope"
                       aria-expanded="false"
                       aria-controls="letter-panel"
+                      aria-label="Abrir carta de cumpleaños para Lia"
                     >
                       <span class="sr-only">Abrir carta de cumpleaños</span>
                       <span class="envelope__flap" aria-hidden="true"></span>
                       <span class="envelope__body" aria-hidden="true">
                         <span class="envelope__seal">L</span>
                       </span>
-                      <span class="envelope__hint" aria-hidden="true">Abrir</span>
+                      <span class="envelope__hint" aria-hidden="true">Toca para abrir</span>
                     </button>
 
-                    <article id="letter-panel" class="letter-panel" hidden>
+                    <article id="letter-panel" class="letter-panel" hidden aria-label="Mensaje de cumpleaños para Lia">
                       <p class="letter-date">28 de noviembre</p>
                       <h3 class="letter-greeting script-line">Querida Lia,</h3>
                       <div class="letter-body">
                         <p>
-                          Hay días que brillan distinto. Hoy es uno de ellos:
-                          el día en que el mundo se detiene un segundo para celebrarte.
+                          Hay días que brillan distinto. Hoy es uno de ellos: el día en que el mundo se detiene un segundo para celebrarte.
                         </p>
                         <p>
-                          Que este pequeño universo te recuerde lo valiosa que eres —
-                          tu ternura, tu magia, la forma en que llenas de luz lo ordinario.
+                          Que este pequeño universo te recuerde lo valiosa que eres — tu ternura, tu magia, la forma en que llenas de luz lo ordinario.
                         </p>
                         <p>
-                          Que tu año nuevo personal traiga rosas, risas, abrazos suaves
-                          y todas las sorpresas bonitas que mereces.
+                          Que tu año nuevo personal traiga rosas, risas, abrazos suaves y todas las sorpresas bonitas que mereces.
                         </p>
                       </div>
                       <p class="letter-signoff script-line">Con todo el cariño del mundo,</p>
                       <p class="letter-from">Tu pequeño universo</p>
+                      <div class="letter-seal" aria-hidden="true">L</div>
                     </article>
                   </div>
                 </div>
               </article>
 
-              <!-- PAGE 4 — 28 -->
-              <article class="page" data-page="3" id="page-date" aria-label="Página 4: 28 de noviembre" hidden>
+              <!-- PAGE 4 — 28 de noviembre -->
+              <article class="page" data-page="3" id="page-date" aria-label="Capítulo IV: 28 de noviembre" hidden>
                 <div class="page-scroll">
                   <header class="page-header">
                     <p class="eyebrow">Capítulo IV</p>
                     <h2 class="section-title">El día marcado en oro</h2>
                   </header>
+
                   <div class="date-composition date-composition--page">
                     <div class="sparkle-field" id="date-sparkles" aria-hidden="true"></div>
-                    <div class="date-number" aria-label="Veintiocho">
+                    <div class="date-number" aria-label="28 de noviembre">
                       <span class="date-digit">2</span>
                       <span class="date-digit">8</span>
                     </div>
@@ -233,16 +280,34 @@
                 </div>
               </article>
 
-              <!-- PAGE 5 — Finale -->
-              <article class="page" data-page="4" id="page-finale" aria-label="Página 5: Celebración" hidden>
+              <!-- PAGE 5 — Celebración final -->
+              <article class="page" data-page="4" id="page-finale" aria-label="Última página: Celebración" hidden>
                 <div class="page-scroll page-scroll--finale">
                   <div class="finale-atmosphere" id="finale-layer" aria-hidden="true"></div>
                   <p class="eyebrow">Última página</p>
                   <h2 class="finale-title">Feliz cumpleaños, Lia</h2>
                   <p class="finale-sub script-line">Que tu mundo siempre esté lleno de magia</p>
+
                   <div class="finale-rose" aria-hidden="true">
-                    <img src="assets/svg/rose-hero.svg" alt="" width="140" height="184" loading="lazy" />
+                    <img src="assets/svg/rose-hero.svg" alt="" width="130" height="170" loading="lazy" />
                   </div>
+
+                  <!-- Fotos de celebración final -->
+                  <div class="book-photo-grid book-photo-grid--finale">
+                    <figure class="book-photo-frame">
+                      <div class="print__frame">
+                        <img src="assets/lia/opt/moment-05.webp" alt="Lia compartiendo un momento radiante" width="1100" height="825" loading="lazy" decoding="async" />
+                      </div>
+                      <figcaption class="script-line">Siempre radiante</figcaption>
+                    </figure>
+                    <figure class="book-photo-frame">
+                      <div class="print__frame">
+                        <img src="assets/lia/opt/moment-06.webp" alt="La mirada cómplice y cariñosa de Lia" width="1100" height="825" loading="lazy" decoding="async" />
+                      </div>
+                      <figcaption class="script-line">Un abrazo al corazón</figcaption>
+                    </figure>
+                  </div>
+
                   <button id="replay-btn" type="button" class="btn-ghost">
                     Cerrar y volver a abrir
                   </button>
@@ -250,7 +315,7 @@
               </article>
             </div>
 
-            <!-- Turning page overlay for flip animation -->
+            <!-- Turning page overlay for 3D flip animation -->
             <div class="page-flip" id="page-flip" aria-hidden="true">
               <div class="page-flip__face page-flip__face--front"></div>
               <div class="page-flip__face page-flip__face--back"></div>
@@ -260,6 +325,7 @@
       </div>
     </div>
 
+    <!-- CTA button to open book -->
     <div class="book-cta" id="book-cta">
       <button id="discover-btn" type="button" class="btn-primary">
         <span>Abrir el libro</span>
@@ -267,6 +333,7 @@
       </button>
     </div>
 
+    <!-- Book chapter / page navigation -->
     <nav class="book-nav" id="book-nav" hidden aria-label="Páginas del libro">
       <button type="button" class="book-nav__btn" id="prev-page" aria-label="Página anterior" disabled>
         <span aria-hidden="true">‹</span> Anterior
@@ -284,6 +351,7 @@
     </nav>
   </div>
 
+  <!-- Scripts -->
   <script src="js/audio.js" defer></script>
   <script src="js/particles.js" defer></script>
   <script src="js/letter.js" defer></script>

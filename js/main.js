@@ -1,76 +1,96 @@
 /**
  * LIA — A Little World of Magic
- * Book experience orchestration
+ * Main orchestration for the 3D book experience.
  */
 (function () {
-  const musicBtn = document.getElementById("music-toggle");
-  const replayBtn = document.getElementById("replay-btn");
+  "use strict";
 
-  let systems = {
-    ambientParticles: null,
-    pageReady: {
-      0: false,
-      1: false,
-      2: false,
-      3: false,
-      4: false
-    },
-    finaleBurstDone: false
-  };
+  let ambientParticles = null;
+  const pageReady = { 0: false, 1: false, 2: false, 3: false, 4: false };
+  let finaleBurstDone = false;
 
   function initAmbient() {
     const canvas = document.getElementById("welcome-particles");
     if (!canvas || !window.LiaParticles) return;
-    systems.ambientParticles = LiaParticles.createParticles(canvas, {
-      count: 34,
+    ambientParticles = LiaParticles.createParticles(canvas, {
+      count: 38,
       mode: "dust",
-      color: "rgba(232, 200, 140, 0.5)",
-      size: [0.6, 1.8],
+      color: "rgba(232, 200, 140, 0.55)",
+      size: [0.6, 2.0],
       speed: [0.08, 0.3]
     });
   }
 
   function preparePage(index) {
-    if (systems.pageReady[index] || !window.LiaParticles) return;
-    systems.pageReady[index] = true;
+    if (pageReady[index] || !window.LiaParticles) return;
+    pageReady[index] = true;
 
     if (index === 0) {
-      LiaParticles.createPetals(document.getElementById("garden-petals"), 12);
+      LiaParticles.createPetals(document.getElementById("garden-petals"), 14);
     }
     if (index === 2 && window.LiaLetter) {
       LiaLetter.initLetter();
     }
     if (index === 3) {
-      LiaParticles.createSparkles(document.getElementById("date-sparkles"), 22);
+      LiaParticles.createSparkles(document.getElementById("date-sparkles"), 24);
     }
-    if (index === 4 && !systems.finaleBurstDone) {
-      systems.finaleBurstDone = true;
+    if (index === 4 && !finaleBurstDone) {
+      finaleBurstDone = true;
       const layer = document.getElementById("finale-layer");
-      LiaParticles.burstConfetti(layer, 52);
+      LiaParticles.burstConfetti(layer, 55);
     }
   }
 
   function setupMusic() {
+    const musicBtn = document.getElementById("music-toggle");
     if (!musicBtn || !window.LiaAudio) return;
+
+    const iconOff = musicBtn.querySelector(".icon-music-off");
+    const iconOn = musicBtn.querySelector(".icon-music-on");
+
     musicBtn.addEventListener("click", async () => {
-      const on = await LiaAudio.toggle();
-      musicBtn.setAttribute("aria-pressed", on ? "true" : "false");
+      const isPlaying = await LiaAudio.toggle();
+      musicBtn.setAttribute("aria-pressed", isPlaying ? "true" : "false");
       musicBtn.setAttribute(
         "aria-label",
-        on ? "Silenciar música ambiental" : "Activar música ambiental"
+        isPlaying ? "Silenciar música ambiental" : "Activar música ambiental"
       );
+
+      if (iconOff && iconOn) {
+        if (isPlaying) {
+          iconOff.classList.add("hidden");
+          iconOn.classList.remove("hidden");
+        } else {
+          iconOff.classList.remove("hidden");
+          iconOn.classList.add("hidden");
+        }
+      }
     });
   }
 
   function setupReplay() {
+    const replayBtn = document.getElementById("replay-btn");
     if (!replayBtn) return;
-    replayBtn.addEventListener("click", () => window.location.reload());
+    replayBtn.addEventListener("click", () => {
+      if (window.LiaLetter) {
+        LiaLetter.resetLetter();
+      }
+      finaleBurstDone = false;
+      pageReady[4] = false;
+      if (window.LiaBook) {
+        LiaBook.close();
+      }
+    });
   }
 
   function init() {
     initAmbient();
     setupMusic();
     setupReplay();
+
+    if (window.LiaLetter) {
+      LiaLetter.initLetter();
+    }
 
     if (window.LiaBook) {
       LiaBook.init({
@@ -85,7 +105,7 @@
 
     window.addEventListener(
       "resize",
-      () => systems.ambientParticles?.resize?.(),
+      () => ambientParticles?.resize?.(),
       { passive: true }
     );
 
