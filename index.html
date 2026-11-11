@@ -261,50 +261,52 @@
             <p class="eyebrow">Capítulo III</p>
             <h2 id="letter-heading" class="section-title">Una carta para ti</h2>
             <p class="section-lead">
-              Lia, toca el sobre. Déjalo abrirse. Lee despacio, porque cada palabra la escribí pensando en ti.
+              Toca el sobre. Déjalo abrirse. Lee despacio.
             </p>
           </header>
 
           <div class="letter-stage reveal" style="--reveal-delay: 0.2s">
             <!-- Interactive Envelope -->
-              aria-label="Abrir carta de cumpleaños para Lia">
-                <span class="envelope__shadow" aria-hidden="true"></span>
-                <span class="envelope__back" aria-hidden="true"></span>
-                <span class="envelope__paper" aria-hidden="true">
-                  <span class="envelope__paper-lines"></span>
-                </span>
-                <span class="envelope__front" aria-hidden="true"></span>
-                <span class="envelope__flap" aria-hidden="true"></span>
-                <span class="envelope__seal" aria-hidden="true">L</span>
-                <span class="envelope__hint" aria-hidden="true">Toca para abrir</span>
+            <button
+              id="envelope-btn"
+              type="button"
+              class="envelope"
+              aria-expanded="false"
+              aria-controls="letter-panel"
+              aria-label="Abrir carta de cumpleaños para Lia"
+            >
+              <span class="envelope__shadow" aria-hidden="true"></span>
+              <span class="envelope__back" aria-hidden="true"></span>
+              <span class="envelope__paper" aria-hidden="true">
+                <span class="envelope__paper-lines"></span>
+              </span>
+              <span class="envelope__front" aria-hidden="true"></span>
+              <span class="envelope__flap" aria-hidden="true"></span>
+              <span class="envelope__seal" aria-hidden="true">L</span>
+              <span class="envelope__hint" aria-hidden="true">Toca para abrir</span>
             </button>
 
-                <!-- Unfolded Letter Panel -->
-                <article id="letter-panel" class="letter-panel" hidden aria-label="Mensaje de cumpleaños para Lia">
-                  <p class="letter-date">28 de noviembre</p>
-                  <h3 class="letter-greeting script-line">Querida Lia,</h3>
-                  <div class="letter-body">
-                    <p>
-                      Hay días que brillan distinto. Hoy es uno de ellos:
-                      el día en que el mundo se detiene un segundo para celebrarte, Lia.
-                    </p>
-                    <p>
-                      Que este pequeño universo te recuerde lo valiosa que eres.
-                      Tu ternura, tu magia, la forma en que llenas de luz lo ordinario:
-                      todo eso hace que quererte sea lo más natural del mundo.
-                    </p>
-                    <p>
-                      Que tu año nuevo personal traiga rosas, risas, abrazos suaves
-                      y todas las sorpresas bonitas que mereces. Y que cada vez que veas una rosa,
-                      recuerdes que este mundo pequeño lo hice con todo mi cariño para ti.
-                    </p>
-                  </div>
-                  <p class="letter-signoff script-line">Con todo el cariño del mundo,</p>
-                  <p class="letter-from">Tu pequeño universo</p>
-                  <div class="letter-seal" aria-hidden="true">L</div>
-                </article>
+            <!-- Unfolded Letter Panel -->
+            <article id="letter-panel" class="letter-panel" hidden aria-label="Mensaje de cumpleaños para Lia">
+              <p class="letter-date">28 de noviembre</p>
+              <h3 class="letter-greeting script-line">Querida Lia,</h3>
+              <div class="letter-body">
+                <p>
+                  Hay días que brillan distinto. Hoy es uno de ellos: el día en que el mundo se detiene un segundo para celebrarte.
+                </p>
+                <p>
+                  Que este pequeño universo te recuerde lo valiosa que eres — tu ternura, tu magia, la forma en que llenas de luz lo ordinario.
+                </p>
+                <p>
+                  Que tu año nuevo personal traiga rosas, risas, abrazos suaves y todas las sorpresas bonitas que mereces.
+                </p>
               </div>
-            </div>
+              <p class="letter-signoff script-line">Con todo el cariño del mundo,</p>
+              <p class="letter-from">Tu pequeño universo</p>
+              <div class="letter-seal" aria-hidden="true">L</div>
+            </article>
+          </div>
+        </div>
       </section>
 
           <!-- =========================================================

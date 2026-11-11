@@ -711,7 +711,11 @@ button {
   aspect-ratio: 16 / 11;
   display: block;
   transform-style: preserve-3d;
+  cursor: pointer;
   transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+.envelope:not(.is-open):hover {
+  transform: translateY(-4px);
 }
 .envelope:focus-visible { outline: 2px solid var(--champagne); outline-offset: 8px; }
 
