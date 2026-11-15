@@ -2,7 +2,8 @@
  * LIA — A Little World of Magic
  * Ambient Music Player (Web Audio API Synthesizer + Optional MP3 fallback).
  *
- * User-controlled only: strictly silent until the user clicks the music toggle.
+ * Attempts to start on entry and falls back to a visible user control when
+ * browser autoplay policies require an interaction.
  * By default creates a warm, cinematic ambient pad using Web Audio oscillators.
  * If an MP3 exists at assets/audio/birthday-music.mp3, it plays that track smoothly.
  */
@@ -63,6 +64,9 @@
                 if (this.ctx.state === "suspended") {
                   await this.ctx.resume();
                 }
+                if (this.ctx.state !== "running") {
+                  return false;
+                }
 
                 const now = this.ctx.currentTime;
                 this.masterGain.gain.cancelScheduledValues(now);
@@ -121,7 +125,12 @@
                           return this.playMp3();
                         }
 
-                      return this.playSynth();
+                      try {
+                        return await this.playSynth();
+                      } catch (e) {
+                        this.playing = false;
+                        return false;
+                      }
                     },
 
                     stop() {

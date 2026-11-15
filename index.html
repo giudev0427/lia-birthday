@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Un libro digital para Tía Linda, Lia, creado con cariño para celebrar sus 21 años el 28 de noviembre de 2026." />
-  <meta name="theme-color" content="#1A0A10" />
+  <meta name="theme-color" content="#F6EBDD" />
   <title>Para Tía Linda — Un pequeño mundo de magia</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
@@ -12,13 +12,13 @@
   <a class="skip-link" href="#book-stage">Saltar al libro</a>
 
   <!-- Audio control dock -->
-  <div class="fixed top-4 right-4 z-[80] flex items-center gap-2" role="group" aria-label="Controles de experiencia">
+  <div class="experience-controls" role="group" aria-label="Controles de experiencia">
     <button
       id="music-toggle"
       type="button"
       class="control-btn"
       aria-pressed="false"
-      aria-label="Activar música ambiental"
+      aria-label="Reproducir música"
       title="Música"
     >
       <svg class="icon-music-off" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -32,6 +32,7 @@
         <circle cx="6" cy="18" r="3" stroke="currentColor" stroke-width="1.6"/>
         <circle cx="18" cy="16" r="3" stroke="currentColor" stroke-width="1.6"/>
       </svg>
+      <span class="music-toggle__label">Reproducir música</span>
     </button>
   </div>
 
@@ -125,12 +126,30 @@
                     <figcaption class="script-line">Un recuerdo entre rosas</figcaption>
                   </figure>
 
+                  <section class="coffee-moment" aria-labelledby="coffee-moment-title">
+                    <div class="coffee-moment__copy">
+                      <p class="eyebrow">Una pausa cálida</p>
+                      <h3 class="gallery-title" id="coffee-moment-title">Café, cariño y buenos recuerdos</h3>
+                      <p>Como una taza servida con calma, este rincón guarda conversaciones bonitas, aromas dulces y momentos para compartir contigo.</p>
+                    </div>
+                    <div class="coffee-moment__gallery">
+                      <figure class="coffee-card">
+                        <img src="assets/svg/coffee-cup.svg" alt="Ilustración de una taza de café sobre una mesa clara, acompañada de flores" width="640" height="480" loading="lazy" decoding="async" />
+                        <figcaption class="script-line">Una taza llena de cariño</figcaption>
+                      </figure>
+                      <figure class="coffee-card">
+                        <img src="assets/svg/coffee-beans.svg" alt="Ilustración de granos de café, una rama y una taza vista desde arriba" width="640" height="480" loading="lazy" decoding="async" />
+                        <figcaption class="script-line">Aromas que abrazan</figcaption>
+                      </figure>
+                    </div>
+                  </section>
+
                   <section class="music-dedication" aria-labelledby="music-title">
                     <div class="music-heading">
                       <span class="music-heading__ornament" aria-hidden="true">✦</span>
                       <p class="eyebrow">Un regalo para escuchar</p>
                       <h3 class="music-title" id="music-title">Canciones para ti</h3>
-                      <p class="music-intro">Cinco canciones que acompañan este pequeño universo de cariño.</p>
+                      <p class="music-intro">Cinco canciones que acompañan este pequeño universo de cariño. La música ambiental intentará comenzar al entrar; si el navegador la bloquea, usa el control superior.</p>
                     </div>
                     <ol class="song-list">
                       <li class="song-card">
@@ -352,6 +371,7 @@
                         <div class="countdown-unit"><span class="countdown-value" id="countdown-hours">--</span><span class="countdown-label">Horas</span></div>
                         <div class="countdown-unit"><span class="countdown-value" id="countdown-minutes">--</span><span class="countdown-label">Min</span></div>
                       </div>
+                      <p class="countdown-finished" id="countdown-finished" hidden>¡Feliz cumpleaños, Natalia Greys Terraza Taipe!</p>
                       <p class="sr-only" id="countdown-announcement" aria-live="polite">La cuenta regresiva termina el 28 de noviembre de 2026.</p>
                     </section>
                     <p class="date-age">21 años llenos de magia y cariño</p>

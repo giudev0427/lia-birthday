@@ -2,20 +2,20 @@
 
 Experiencia web premium de cumpleaños para **Lia**: el **28 de noviembre de 2026** cumple **21 años**.
 
-No es una tarjeta convencional: es un **libro digital 3D** íntimo, cinematográfico y editorial — un pequeño universo de rosas, cariño y magia que se abre página a página.
+No es una tarjeta convencional: es un **libro digital 3D** íntimo y editorial, ambientado en una paleta clara de crema y café — un pequeño universo de rosas, cariño y magia que se abre página a página.
 
 ## Dirección artística
 
-**Identidad:** Romanticismo cinematográfico · editorial de lujo · libro encantado de rosas.
+**Identidad:** Café romántico · editorial cálido · libro encantado de rosas.
 
 | Token | Valor | Uso |
 | --- | --- | --- |
-| Night | `#1A0A10` | Fondo principal del universo |
-| Burgundy | `#5C1227` | Terciopelo de la encuadernación, acentos |
-| Ruby | `#C41E3A` | Rosas y detalles florales |
-| Dusty rose | `#D4A5A5` | Textos suaves |
-| Warm cream | `#F7F0E8` | Papel artesanal y tipografía primaria |
-| Champagne gold | `#C9A962` | Marcos dorados, sellos y detalles preciosos |
+| Cream | `#F6EBDD` | Fondo principal claro |
+| Coffee | `#704126` | Encuadernación, títulos y acciones |
+| Caramel | `#A96642` | Detalles cálidos y estados interactivos |
+| Latte | `#D9B98E` | Acentos suaves |
+| Warm paper | `#FFFDF8` | Papel artesanal y tarjetas |
+| Toasted gold | `#A97743` | Marcos, sellos y detalles |
 
 **Tipografía**
 
@@ -25,7 +25,7 @@ No es una tarjeta convencional: es un **libro digital 3D** íntimo, cinematográ
 
 **Recursos visuales**
 
-- Rosas ilustradas, Snoopy y rosas reales acompañan la experiencia; la galería de Lia conserva sus fotografías optimizadas.
+- Rosas ilustradas, Snoopy, rosas reales y dos composiciones originales inspiradas en café acompañan la experiencia; la galería de Lia conserva sus fotografías optimizadas.
 - Fotografías personales de Lia con marcos editoriales y optimización WebP.
 
 ## Experiencia del Libro
@@ -33,7 +33,7 @@ No es una tarjeta convencional: es un **libro digital 3D** íntimo, cinematográ
 1. **Portada cerrada (3D)** — encuadernación en terciopelo noche y burdeos con marco de oro, rosa central con animación de respiración y botón **Abrir el libro**.
 2. **Apertura cinematográfica** — la tapa gira en perspectiva 3D revelando el spread a doble página.
 3. **Hoja izquierda** — dedicatoria poética *«Para Lia — Un pequeño universo»* con rosa floreciente.
-4. **Capítulo I · Jardín nocturno** — rosas rojas, lluvia de pétalos flotantes, cita emocional, recuerdo enmarcado (`moment-02.webp`) y cinco enlaces de búsqueda en Spotify: «Por Ti» (3AM), «San Cipriano» (La Santa), «EL CIELO» (Rels B), «Eres la herida más bonita» y «Eres mi más hermosa canción» (Mr. Yeff).
+4. **Capítulo I · Jardín y café** — rosas, lluvia de pétalos, cita emocional, recuerdo enmarcado (`moment-02.webp`), composiciones originales de café y cinco enlaces de búsqueda en Spotify: «Por Ti» (3AM), «San Cipriano» (La Santa), «EL CIELO» (Rels B), «Eres la herida más bonita» y «Eres mi más hermosa canción» (Mr. Yeff).
 5. **Capítulo II · Tu rincón de cariño** — galería de Snoopy inspirada en el tablero de Pinterest indicado, tres fotografías reales de rosas y recuerdos de Lia (`moment-01.webp`, `moment-03.webp`, `moment-04.webp`).
 6. **Capítulo III · Una carta para ti** — sobre interactivo 3D con sello de cera «L» que al tocarlo se abre y despliega la carta con dedicatoria íntima.
 7. **Capítulo IV · El 28** — fecha completa (28/11/2026), contador regresivo local, mención de los 21 años, rosas y destellos dorados titilantes.
@@ -68,14 +68,14 @@ Abre `http://localhost:8080`.
 - **Abrir el libro** / tocar la portada — animación 3D de apertura
 - **Anterior / Siguiente** o flechas del teclado `←` / `→` — pasar hojas con efecto 3D
 - **Puntos de página** — saltar directamente a cualquier capítulo
-- **Música** — pad ambiental sintetizado con Web Audio API (opcional y controlado por el usuario)
+- **Música** — el sitio intenta iniciar un pad ambiental sintetizado con Web Audio API al entrar; si el navegador bloquea el autoplay, queda disponible el botón visible **Reproducir música**.
 - **Canciones para ti** — cada botón abre una búsqueda en Spotify del tema y artista indicados; no se presupone una URI de pista concreta.
 - **Sobre** — abre la carta interactiva con animación 3D
 - **Cerrar y volver a abrir** — reinicia el recorrido del libro y la carta
 
 Todo respeta `prefers-reduced-motion`.
 
-El contador llega a cero a la medianoche del **28/11/2026**, según la zona horaria local del navegador.
+El contador llega a cero a la medianoche del **28/11/2026**, según la zona horaria local del navegador, y muestra: **«¡Feliz cumpleaños, Natalia Greys Terraza Taipe!»**.
 
 ## Licencias y atribuciones de imágenes
 

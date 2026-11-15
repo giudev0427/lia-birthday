@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Café visto desde arriba</title>
+  <desc id="desc">Composición ilustrada con una taza de café, granos y hojas en tonos cálidos.</desc>
+  <defs>
+    <radialGradient id="paper" cx=".35" cy=".25" r=".9">
+      <stop stop-color="#fffdf8"/>
+      <stop offset="1" stop-color="#e4cdb5"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="480" rx="36" fill="url(#paper)"/>
+  <circle cx="247" cy="237" r="137" fill="#f8eee2" stroke="#9a6b49" stroke-width="8"/>
+  <circle cx="247" cy="237" r="104" fill="#68422f"/>
+  <path d="M332 158c106-17 117 133 26 153-21 5-42 1-59-9l18-38c13 8 25 10 37 7 45-12 37-78-11-73l-14 2z" fill="#ead4bd" stroke="#9a6b49" stroke-width="8"/>
+  <path d="M206 217c24-35 68-30 87 3-31-13-62-12-87-3z" fill="#caa77f" opacity=".55"/>
+  <g fill="#73503a" stroke="#4e3427" stroke-width="3">
+    <path d="M438 104c29-20 63 11 47 42-16 32-61 27-69-8-3-14 5-26 22-34z"/><path d="M452 105c-2 23 10 37 31 42" fill="none"/>
+    <path d="M497 181c33-14 60 22 38 50-22 27-65 14-66-22 0-14 10-23 28-28z"/><path d="M511 183c-7 21 2 38 21 48" fill="none"/>
+    <path d="M432 297c28-21 64 8 49 40-15 32-60 29-70-5-4-14 4-27 21-35z"/><path d="M446 298c-1 22 11 36 32 40" fill="none"/>
+    <path d="M119 346c31-17 62 17 43 47-19 29-63 20-67-16-1-14 8-25 24-31z"/><path d="M133 347c-5 22 5 38 25 46" fill="none"/>
+  </g>
+  <path d="M80 112c35 16 63 43 84 81M82 111c45-3 75 11 91 40M83 112c8 43 28 71 61 85" fill="none" stroke="#708362" stroke-width="8" stroke-linecap="round"/>
+  <g fill="#9bac88">
+    <ellipse cx="104" cy="133" rx="29" ry="14" transform="rotate(35 104 133)"/>
+    <ellipse cx="132" cy="161" rx="31" ry="14" transform="rotate(36 132 161)"/>
+    <ellipse cx="104" cy="164" rx="28" ry="13" transform="rotate(72 104 164)"/>
+  </g>
+</svg>

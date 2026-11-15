@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Taza de café y flores</title>
+  <desc id="desc">Naturaleza muerta en tonos crema y café con una taza humeante.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#fffaf2"/>
+      <stop offset="1" stop-color="#ead6bf"/>
+    </linearGradient>
+    <linearGradient id="cup" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#fffdf8"/>
+      <stop offset="1" stop-color="#d9bfa5"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="480" rx="36" fill="url(#bg)"/>
+  <ellipse cx="322" cy="397" rx="195" ry="30" fill="#8c5d3b" opacity=".16"/>
+  <path d="M168 118c32 36 7 55 34 87M246 84c38 42 2 67 31 105M332 108c31 35 4 58 30 82" fill="none" stroke="#b88762" stroke-width="9" stroke-linecap="round" opacity=".48"/>
+  <path d="M151 213h293l-24 136c-5 31-31 53-62 53H235c-31 0-57-22-62-53z" fill="url(#cup)" stroke="#805536" stroke-width="7"/>
+  <ellipse cx="298" cy="214" rx="147" ry="42" fill="#f9eee1" stroke="#805536" stroke-width="7"/>
+  <ellipse cx="298" cy="216" rx="126" ry="29" fill="#65402d"/>
+  <path d="M436 246c94-17 109 100 27 123-22 6-43 0-57-9l9-43c14 13 31 19 47 13 34-12 27-54-7-53l-24 2z" fill="#ead8c5" stroke="#805536" stroke-width="7"/>
+  <path d="M111 348c30-54 55-82 91-106-3 48-18 88-49 123M492 366c-18-55-10-96 18-130 18 47 18 89-3 130" fill="#77916b" stroke="#59754e" stroke-width="5" stroke-linecap="round"/>
+  <g fill="#c98879">
+    <circle cx="104" cy="334" r="18"/><circle cx="128" cy="317" r="15"/><circle cx="512" cy="350" r="17"/><circle cx="534" cy="326" r="14"/>
+  </g>
+</svg>
