@@ -146,10 +146,11 @@
       if (this.prevBtn) this.prevBtn.disabled = index === 0;
       if (this.nextBtn) {
         this.nextBtn.disabled = index === this.pages.length - 1;
+        const translate = (source) => window.LiaI18n?.t(source) || source;
         this.nextBtn.innerHTML =
           index === this.pages.length - 1
-            ? "Fin"
-            : 'Siguiente <span aria-hidden="true">›</span>';
+            ? translate("Fin")
+            : `${translate("Siguiente")} <span aria-hidden="true">›</span>`;
       }
 
       // Focus page for a11y & scroll to top of chapter

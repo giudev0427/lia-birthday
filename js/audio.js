@@ -1,11 +1,10 @@
 /**
  * LIA — A Little World of Magic
- * Ambient Music Player (Web Audio API Synthesizer + Optional MP3 fallback).
+ * Ambient Music Player (local Web Audio API synthesizer).
  *
  * Attempts to start on entry and falls back to a visible user control when
  * browser autoplay policies require an interaction.
- * By default creates a warm, cinematic ambient pad using Web Audio oscillators.
- * If an MP3 exists at assets/audio/birthday-music.mp3, it plays that track smoothly.
+ * Creates a warm, original ambient pad using browser-native oscillators.
  */
 (function () {
   "use strict";
@@ -14,10 +13,7 @@
     ctx: null,
     masterGain: null,
     synthNodes: [],
-    audioEl: null,
     playing: false,
-    usingMp3: false,
-    mp3Path: "assets/audio/birthday-music.mp3",
 
       /**
        * Set up the audio graph for the synthesized ambient pad
@@ -85,46 +81,7 @@
                   this.playing = false;
                 },
 
-    async playMp3() {
-                    if (!this.audioEl) {
-                      this.audioEl = new Audio(this.mp3Path);
-                      this.audioEl.loop = true;
-                      this.audioEl.volume = 0.45;
-                    }
-                    try {
-                      await this.audioEl.play();
-                      this.playing = true;
-                      this.usingMp3 = true;
-                      return true;
-                    } catch (e) {
-                      this.usingMp3 = false;
-                      return false;
-                    }
-                  },
-
-                    stopMp3() {
-                      if (this.audioEl) {
-                        this.audioEl.pause();
-                      }
-                      this.playing = false;
-                    },
-
     async play() {
-                          // First check if MP3 can be loaded, otherwise fallback gracefully to synth
-                          if (!this.usingMp3 && !this.audioEl) {
-                            try {
-                            const resp = await fetch(this.mp3Path, { method: "HEAD" });
-                            if (resp.ok) {
-                              const started = await this.playMp3();
-                              if (started) return true;
-                            }
-                          } catch (e) {
-                            // No MP3 available, use synth
-                          }
-                        } else if (this.usingMp3 && this.audioEl) {
-                          return this.playMp3();
-                        }
-
                       try {
                         return await this.playSynth();
                       } catch (e) {
@@ -134,11 +91,7 @@
                     },
 
                     stop() {
-                      if (this.usingMp3) {
-                        this.stopMp3();
-                      } else {
-                        this.stopSynth();
-                      }
+                      this.stopSynth();
                     },
 
     async toggle() {

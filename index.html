@@ -13,6 +13,13 @@
 
   <!-- Audio control dock -->
   <div class="experience-controls" role="group" aria-label="Controles de experiencia">
+    <div class="language-switcher" role="group" aria-label="Seleccionar idioma">
+      <button type="button" class="language-switcher__btn is-active" data-language="es" aria-label="Cambiar idioma a español" aria-pressed="true">ES</button>
+      <span aria-hidden="true">/</span>
+      <button type="button" class="language-switcher__btn" data-language="en" aria-label="Cambiar idioma a inglés" aria-pressed="false">EN</button>
+      <span aria-hidden="true">/</span>
+      <button type="button" class="language-switcher__btn" data-language="it" aria-label="Cambiar idioma a italiano" aria-pressed="false">IT</button>
+    </div>
     <button
       id="music-toggle"
       type="button"
@@ -473,6 +480,7 @@
   </div>
 
   <!-- Scripts -->
+  <script src="js/i18n.js" defer></script>
   <script src="js/audio.js" defer></script>
   <script src="js/particles.js" defer></script>
   <script src="js/letter.js" defer></script>
