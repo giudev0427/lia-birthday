@@ -3,41 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="LIA — A Little World of Magic. Un libro digital de cumpleaños íntimo y cinematográfico." />
+  <meta name="description" content="Un libro digital para Tía Linda, Lia, creado con cariño para celebrar sus 21 años el 28 de noviembre de 2026." />
   <meta name="theme-color" content="#1A0A10" />
-  <title>LIA — A Little World of Magic</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Great+Vibes&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            night: '#1A0A10',
-            burgundy: '#5C1227',
-            ruby: '#C41E3A',
-            'ruby-deep': '#9B1B3A',
-            dusty: '#D4A5A5',
-            cream: '#F7F0E8',
-            champagne: '#C9A962',
-            garden: '#0F1A14'
-          },
-          fontFamily: {
-            display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-            script: ['"Great Vibes"', 'cursive'],
-            sans: ['Outfit', 'system-ui', 'sans-serif']
-          }
-        }
-      }
-    };
-  </script>
+  <title>Para Tía Linda — Un pequeño mundo de magia</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body class="bg-night text-cream font-sans antialiased overflow-x-hidden">
+<body>
   <a class="skip-link" href="#book-stage">Saltar al libro</a>
 
   <!-- Audio control dock -->
@@ -73,7 +44,7 @@
   <!-- BOOK EXPERIENCE -->
   <div id="book-stage" class="book-stage" data-state="closed">
     <p class="book-intro-text" id="book-intro">
-      Lia, hay un pequeño universo preparado para ti
+      Tía Linda, hay un pequeño universo preparado para ti
     </p>
 
     <div class="book-scene" aria-label="Libro de cumpleaños de Lia">
@@ -89,9 +60,10 @@
           <span class="book-cover__front">
             <span class="book-cover__ornament" aria-hidden="true"></span>
             <img src="assets/svg/rose-hero.svg" alt="" class="book-cover__rose" width="140" height="184" decoding="async" />
+            <span class="book-cover__dedication">Para Tía Linda</span>
             <span class="book-cover__title">LIA</span>
             <span class="book-cover__subtitle">A Little World of Magic</span>
-            <span class="book-cover__date">28 · XI</span>
+            <span class="book-cover__date">28 · XI · 2026</span>
             <span class="book-cover__hint">Toca para abrir</span>
           </span>
           <span class="book-cover__inside" aria-hidden="true"></span>
@@ -106,8 +78,9 @@
             <div class="sheet-paper sheet-paper--left">
               <div class="sheet-decoration">
                 <img src="assets/svg/rose-bloom.svg" alt="" width="72" height="86" loading="lazy" />
-                <p class="script-line sheet-script">Para Lia</p>
-                <p class="sheet-meta">Un pequeño universo de rosas, cariño y magia</p>
+                <p class="sheet-kicker">Un regalo hecho con el corazón</p>
+                <p class="script-line sheet-script">Para Tía Linda</p>
+                <p class="sheet-meta">Un pequeño universo de rosas, Snoopy, canciones y magia para celebrar tu vida.</p>
                 <div class="sheet-flourish">
                   <span class="sheet-date">28 de noviembre</span>
                 </div>
@@ -118,7 +91,7 @@
           <!-- Right page: interactive chapters -->
           <div class="book-sheet book-sheet--right">
             <div class="pages" id="book-pages">
-              <!-- PAGE 1 — Jardín nocturno -->
+              <!-- PAGE 1 — Jardín nocturno y banda sonora -->
               <article class="page is-active" data-page="0" id="page-garden" aria-label="Capítulo I: Jardín nocturno">
                 <div class="page-scroll">
                   <header class="page-header">
@@ -151,6 +124,58 @@
                     </div>
                     <figcaption class="script-line">Un recuerdo entre rosas</figcaption>
                   </figure>
+
+                  <section class="music-dedication" aria-labelledby="music-title">
+                    <div class="music-heading">
+                      <span class="music-heading__ornament" aria-hidden="true">✦</span>
+                      <p class="eyebrow">Un regalo para escuchar</p>
+                      <h3 class="music-title" id="music-title">Canciones para ti</h3>
+                      <p class="music-intro">Cinco canciones que acompañan este pequeño universo de cariño.</p>
+                    </div>
+                    <ol class="song-list">
+                      <li class="song-card">
+                        <span class="song-number" aria-hidden="true">01</span>
+                        <div class="song-copy"><span class="song-name">Por Ti</span><span class="song-artist">3AM</span></div>
+                        <a class="song-link" href="https://open.spotify.com/search/Por%20Ti%203AM" target="_blank" rel="noopener noreferrer" aria-label="Buscar Por Ti de 3AM en Spotify">
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M7.3 9.1c3.4-1 7.4-.5 10.1 1.1M8.1 12c2.8-.8 6-.4 8.3.9m-7.5 1.8c2.1-.6 4.5-.2 6.3.7"/></svg>
+                          <span>Escuchar en Spotify</span>
+                        </a>
+                      </li>
+                      <li class="song-card">
+                        <span class="song-number" aria-hidden="true">02</span>
+                        <div class="song-copy"><span class="song-name">San Cipriano</span><span class="song-artist">La Santa</span></div>
+                        <a class="song-link" href="https://open.spotify.com/search/San%20Cipriano%20La%20Santa" target="_blank" rel="noopener noreferrer" aria-label="Buscar San Cipriano de La Santa en Spotify">
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M7.3 9.1c3.4-1 7.4-.5 10.1 1.1M8.1 12c2.8-.8 6-.4 8.3.9m-7.5 1.8c2.1-.6 4.5-.2 6.3.7"/></svg>
+                          <span>Escuchar en Spotify</span>
+                        </a>
+                      </li>
+                      <li class="song-card">
+                        <span class="song-number" aria-hidden="true">03</span>
+                        <div class="song-copy"><span class="song-name">EL CIELO</span><span class="song-artist">Rels B</span></div>
+                        <a class="song-link" href="https://open.spotify.com/search/EL%20CIELO%20Rels%20B" target="_blank" rel="noopener noreferrer" aria-label="Buscar EL CIELO de Rels B en Spotify">
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M7.3 9.1c3.4-1 7.4-.5 10.1 1.1M8.1 12c2.8-.8 6-.4 8.3.9m-7.5 1.8c2.1-.6 4.5-.2 6.3.7"/></svg>
+                          <span>Escuchar en Spotify</span>
+                        </a>
+                      </li>
+                      <li class="song-card">
+                        <span class="song-number" aria-hidden="true">04</span>
+                        <div class="song-copy"><span class="song-name">Eres la herida más bonita</span><span class="song-artist">Mr. Yeff</span></div>
+                        <a class="song-link" href="https://open.spotify.com/search/Eres%20la%20herida%20m%C3%A1s%20bonita%20Mr.%20Yeff" target="_blank" rel="noopener noreferrer" aria-label="Buscar Eres la herida más bonita de Mr. Yeff en Spotify">
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M7.3 9.1c3.4-1 7.4-.5 10.1 1.1M8.1 12c2.8-.8 6-.4 8.3.9m-7.5 1.8c2.1-.6 4.5-.2 6.3.7"/></svg>
+                          <span>Escuchar en Spotify</span>
+                        </a>
+                      </li>
+                      <li class="song-card">
+                        <span class="song-number" aria-hidden="true">05</span>
+                        <div class="song-copy"><span class="song-name">Eres mi más hermosa canción</span><span class="song-artist">Mr. Yeff</span></div>
+                        <a class="song-link" href="https://open.spotify.com/search/Eres%20mi%20m%C3%A1s%20hermosa%20canci%C3%B3n%20Mr.%20Yeff" target="_blank" rel="noopener noreferrer" aria-label="Buscar Eres mi más hermosa canción de Mr. Yeff en Spotify">
+                          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M7.3 9.1c3.4-1 7.4-.5 10.1 1.1M8.1 12c2.8-.8 6-.4 8.3.9m-7.5 1.8c2.1-.6 4.5-.2 6.3.7"/></svg>
+                          <span>Escuchar en Spotify</span>
+                        </a>
+                      </li>
+                    </ol>
+                    <p class="music-note">Cada botón abre una búsqueda del tema en Spotify.</p>
+                  </section>
                 </div>
               </article>
 
@@ -161,28 +186,71 @@
                     <p class="eyebrow">Capítulo II</p>
                     <h2 class="section-title">Tu rincón de cariño</h2>
                     <p class="section-lead">
-                      Lia, tu rincón de cariño está lleno de un beagle soñador, un pajarito travieso, peluchitos y gatitos que siempre te acompañan.
+                      Lia, este rincón está lleno de Snoopy, amistad y rosas que florecen para celebrar todo lo bonito que eres.
                     </p>
                   </header>
 
-                  <div class="companion-stage companion-stage--page">
-                    <figure class="companion-card companion-card--hero">
-                      <img src="assets/svg/companion-beagle.svg" alt="Beagle blanco soñador" width="160" height="174" loading="lazy" />
-                      <figcaption><span class="script-line">El guardián suave</span></figcaption>
-                    </figure>
-                    <figure class="companion-card">
-                      <img src="assets/svg/companion-bird.svg" alt="Pajarito amarillo alegre" width="90" height="90" loading="lazy" />
-                      <figcaption><span class="script-line">El pajarito</span></figcaption>
-                    </figure>
-                    <figure class="companion-card">
-                      <img src="assets/svg/plush.svg" alt="Peluche rosado tierno" width="100" height="115" loading="lazy" />
-                      <figcaption><span class="script-line">Peluchito</span></figcaption>
-                    </figure>
-                    <figure class="companion-card companion-card--hero">
-                      <img src="assets/svg/kitten.svg" alt="Gatito crema curioso" width="120" height="131" loading="lazy" />
-                      <figcaption><span class="script-line">Gatito</span></figcaption>
-                    </figure>
-                  </div>
+                  <section class="chapter-gallery" aria-labelledby="snoopy-gallery-title">
+                    <div class="gallery-heading">
+                      <h3 class="gallery-title" id="snoopy-gallery-title">Un poquito de Snoopy para ti</h3>
+                      <p>Una colección dulce para acompañar tus momentos felices.</p>
+                    </div>
+                    <div class="companion-stage companion-stage--page snoopy-grid">
+                      <figure class="companion-card snoopy-card">
+                        <img src="assets/snoopy/snoopy-1.jpg" alt="Snoopy sostiene una flor rosada" width="575" height="1024" loading="lazy" decoding="async" />
+                        <figcaption><span class="script-line">Un detalle para ti</span></figcaption>
+                      </figure>
+                      <figure class="companion-card snoopy-card">
+                        <img src="assets/snoopy/snoopy-3.jpg" alt="Snoopy abraza un corazón bajo un diente de león" width="735" height="674" loading="lazy" decoding="async" />
+                        <figcaption><span class="script-line">Un abrazo sincero</span></figcaption>
+                      </figure>
+                      <figure class="companion-card snoopy-card">
+                        <img src="assets/snoopy/snoopy-5.jpg" alt="Snoopy y Woodstock sentados juntos" width="736" height="736" loading="lazy" decoding="async" />
+                        <figcaption><span class="script-line">Amigos inseparables</span></figcaption>
+                      </figure>
+                      <figure class="companion-card snoopy-card">
+                        <img src="assets/snoopy/snoopy-7.jpg" alt="Snoopy descansa sobre su casita roja" width="712" height="1024" loading="lazy" decoding="async" />
+                        <figcaption><span class="script-line">Soñando a gusto</span></figcaption>
+                      </figure>
+                    </div>
+                    <p class="gallery-credit">Imágenes inspiradas en el <a href="https://cl.pinterest.com/jennafcn/snupy/" target="_blank" rel="noopener noreferrer">tablero «Snupy» de Jenna en Pinterest</a>.</p>
+                  </section>
+
+                  <section class="rose-gallery" aria-labelledby="rose-gallery-title">
+                    <div class="gallery-heading">
+                      <h3 class="gallery-title" id="rose-gallery-title">Rosas reales para Lia</h3>
+                      <p>Un ramo de colores y cariño, elegido para ti.</p>
+                    </div>
+                    <div class="book-photo-grid rose-photo-grid">
+                      <figure class="book-photo-frame rose-photo-frame">
+                        <div class="print__frame">
+                          <img src="assets/roses/rose-red.jpg" alt="Rosa roja abierta, fotografiada de cerca" width="960" height="720" loading="lazy" decoding="async" />
+                        </div>
+                        <figcaption>
+                          <span class="script-line">Una rosa, solo para ti</span>
+                          <span class="photo-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Red_Rose.JPG" target="_blank" rel="noopener noreferrer">Casuarez85</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a> (redimensionada)</span>
+                        </figcaption>
+                      </figure>
+                      <figure class="book-photo-frame rose-photo-frame">
+                        <div class="print__frame">
+                          <img src="assets/roses/rose-closeup.jpg" alt="Primer plano de una rosa en flor" width="602" height="400" loading="lazy" decoding="async" />
+                        </div>
+                        <figcaption>
+                          <span class="script-line">La belleza de cada pétalo</span>
+                          <span class="photo-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Rose_-_difinitive.jpg" target="_blank" rel="noopener noreferrer">Benjamint444</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a> (redimensionada)</span>
+                        </figcaption>
+                      </figure>
+                      <figure class="book-photo-frame rose-photo-frame">
+                        <div class="print__frame">
+                          <img src="assets/roses/rose-garden.jpg" alt="Rosa roja en un jardín de rosas" width="960" height="640" loading="lazy" decoding="async" />
+                        </div>
+                        <figcaption>
+                          <span class="script-line">Que siempre florezca tu alegría</span>
+                          <span class="photo-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Red_rose_in_the_Rose_Garden_of_Regent%27s_Park,_London.JPG" target="_blank" rel="noopener noreferrer">Nonsenseferret</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a> (redimensionada)</span>
+                        </figcaption>
+                      </figure>
+                    </div>
+                  </section>
 
                   <!-- Fotos en el rincón de cariño -->
                   <div class="book-photo-grid">
@@ -235,21 +303,21 @@
                     </button>
 
                     <article id="letter-panel" class="letter-panel" hidden aria-label="Mensaje de cumpleaños para Lia">
-                      <p class="letter-date">28 de noviembre</p>
-                      <h3 class="letter-greeting script-line">Querida Lia,</h3>
+                      <p class="letter-date">28 de noviembre de 2026</p>
+                      <p class="letter-for">Para mi Tía Linda</p>
+                      <h3 class="letter-greeting script-line">¡Felices 21, querida Lia!</h3>
                       <div class="letter-body">
                         <p>
                           Hay días que brillan distinto. Hoy es uno de ellos: el día en que el mundo se detiene un segundo para celebrarte.
                         </p>
                         <p>
-                          Que este pequeño universo te recuerde lo valiosa que eres — tu ternura, tu magia, la forma en que llenas de luz lo ordinario.
+                          Que este pequeño universo te recuerde lo valiosa que eres: tu ternura, tu magia y la forma en que llenas de luz lo cotidiano.
                         </p>
                         <p>
                           Que tu año nuevo personal traiga rosas, risas, abrazos suaves y todas las sorpresas bonitas que mereces.
                         </p>
                       </div>
-                      <p class="letter-signoff script-line">Con todo el cariño del mundo,</p>
-                      <p class="letter-from">Tu pequeño universo</p>
+                      <p class="letter-signoff script-line">Con mucho cariño, Giussepe</p>
                       <div class="letter-seal" aria-hidden="true">L</div>
                     </article>
                   </div>
@@ -257,7 +325,7 @@
               </article>
 
               <!-- PAGE 4 — 28 de noviembre -->
-              <article class="page" data-page="3" id="page-date" aria-label="Capítulo IV: 28 de noviembre" hidden>
+              <article class="page" data-page="3" id="page-date" aria-label="Capítulo IV: 28 de noviembre de 2026" hidden>
                 <div class="page-scroll">
                   <header class="page-header">
                     <p class="eyebrow">Capítulo IV</p>
@@ -275,18 +343,51 @@
                       <img src="assets/svg/rose-bloom.svg" alt="" class="date-rose date-rose--right" width="80" height="96" loading="lazy" />
                     </div>
                     <p class="date-month script-line">noviembre</p>
+                    <p class="date-year">2026</p>
                     <p class="date-caption">El día en que Lia hace magia con solo existir.</p>
+                    <section class="birthday-countdown" aria-label="Cuenta regresiva para el cumpleaños de Lia">
+                      <p class="countdown-title">Cuenta atrás</p>
+                      <div class="countdown-grid" id="birthday-countdown" data-target-date="2026-11-28" role="timer" aria-live="off" aria-label="Cuenta regresiva al 28 de noviembre de 2026">
+                        <div class="countdown-unit"><span class="countdown-value" id="countdown-days">--</span><span class="countdown-label">Días</span></div>
+                        <div class="countdown-unit"><span class="countdown-value" id="countdown-hours">--</span><span class="countdown-label">Horas</span></div>
+                        <div class="countdown-unit"><span class="countdown-value" id="countdown-minutes">--</span><span class="countdown-label">Min</span></div>
+                      </div>
+                      <p class="sr-only" id="countdown-announcement" aria-live="polite">La cuenta regresiva termina el 28 de noviembre de 2026.</p>
+                    </section>
+                    <p class="date-age">21 años llenos de magia y cariño</p>
                   </div>
                 </div>
               </article>
 
               <!-- PAGE 5 — Celebración final -->
-              <article class="page" data-page="4" id="page-finale" aria-label="Última página: Celebración" hidden>
+              <article class="page" data-page="4" id="page-finale" aria-label="Última página: Celebración y felicitaciones" hidden>
                 <div class="page-scroll page-scroll--finale">
                   <div class="finale-atmosphere" id="finale-layer" aria-hidden="true"></div>
                   <p class="eyebrow">Última página</p>
-                  <h2 class="finale-title">Feliz cumpleaños, Lia</h2>
+                  <p class="finale-for">Para una persona muy especial</p>
+                  <h2 class="finale-title">Feliz cumpleaños, Tía Linda</h2>
                   <p class="finale-sub script-line">Que tu mundo siempre esté lleno de magia</p>
+
+                  <aside class="final-dedication" aria-label="Dedicatoria de Giussepe para Tía Linda">
+                    <span class="final-dedication__heart" aria-hidden="true">♥</span>
+                    <p>Tía Linda, deseo que este nuevo año de vida te regale alegría, salud, sueños cumplidos y muchos momentos hermosos. Gracias por ser una persona tan especial y por llenar de cariño la vida de quienes te rodean.</p>
+                    <strong>Con mucho cariño, Giussepe</strong>
+                  </aside>
+
+                  <section class="birthday-tributes" aria-label="Felicitaciones para Lia en español, inglés e italiano">
+                    <article class="birthday-tribute" lang="es">
+                      <p class="birthday-tribute__language">En español</p>
+                      <p>¡Feliz cumpleaños, Lia! Que tus 21 estén llenos de momentos que te hagan sonreír, sueños que se vuelvan realidad y todo el amor que mereces. Gracias por iluminar el mundo con tu forma tan única de ser. Hoy y siempre, que la vida te regale cosas tan bonitas como tú.</p>
+                    </article>
+                    <article class="birthday-tribute" lang="en">
+                      <p class="birthday-tribute__language">In English</p>
+                      <p>Happy birthday, Lia! May your 21st year be filled with moments that make you smile, dreams coming true, and all the love you deserve. Thank you for brightening the world in your own special way. Today and always, may life bring you things as lovely as you are.</p>
+                    </article>
+                    <article class="birthday-tribute" lang="it">
+                      <p class="birthday-tribute__language">In italiano</p>
+                      <p>Buon compleanno, Lia! Che i tuoi 21 anni siano pieni di momenti capaci di farti sorridere, sogni che diventano realtà e tutto l’amore che meriti. Grazie per illuminare il mondo con il tuo modo speciale di essere. Oggi e sempre, che la vita ti regali cose belle proprio come te.</p>
+                    </article>
+                  </section>
 
                   <div class="finale-rose" aria-hidden="true">
                     <img src="assets/svg/rose-hero.svg" alt="" width="130" height="170" loading="lazy" />

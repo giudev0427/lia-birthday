@@ -1,6 +1,6 @@
 # LIA — A Little World of Magic
 
-Experiencia web premium de cumpleaños para **Lia** (28 de noviembre).
+Experiencia web premium de cumpleaños para **Lia**: el **28 de noviembre de 2026** cumple **21 años**.
 
 No es una tarjeta convencional: es un **libro digital 3D** íntimo, cinematográfico y editorial — un pequeño universo de rosas, cariño y magia que se abre página a página.
 
@@ -25,7 +25,7 @@ No es una tarjeta convencional: es un **libro digital 3D** íntimo, cinematográ
 
 **Recursos visuales**
 
-- Rosas, beagle, pajarito, peluchito y gatito: **ilustraciones SVG originales** creadas para esta experiencia.
+- Rosas ilustradas, Snoopy y rosas reales acompañan la experiencia; la galería de Lia conserva sus fotografías optimizadas.
 - Fotografías personales de Lia con marcos editoriales y optimización WebP.
 
 ## Experiencia del Libro
@@ -33,11 +33,11 @@ No es una tarjeta convencional: es un **libro digital 3D** íntimo, cinematográ
 1. **Portada cerrada (3D)** — encuadernación en terciopelo noche y burdeos con marco de oro, rosa central con animación de respiración y botón **Abrir el libro**.
 2. **Apertura cinematográfica** — la tapa gira en perspectiva 3D revelando el spread a doble página.
 3. **Hoja izquierda** — dedicatoria poética *«Para Lia — Un pequeño universo»* con rosa floreciente.
-4. **Capítulo I · Jardín nocturno** — rosas rojas, lluvia de pétalos flotantes, cita emocional y recuerdo enmarcado (`moment-02.webp`).
-5. **Capítulo II · Tu rincón de cariño** — el beagle blanco soñador, el gatito travieso, el pajarito y el peluche junto a los recuerdos de Lia (`moment-01.webp`, `moment-03.webp`, `moment-04.webp`).
+4. **Capítulo I · Jardín nocturno** — rosas rojas, lluvia de pétalos flotantes, cita emocional, recuerdo enmarcado (`moment-02.webp`) y cinco enlaces de búsqueda en Spotify: «Por Ti» (3AM), «San Cipriano» (La Santa), «EL CIELO» (Rels B), «Eres la herida más bonita» y «Eres mi más hermosa canción» (Mr. Yeff).
+5. **Capítulo II · Tu rincón de cariño** — galería de Snoopy inspirada en el tablero de Pinterest indicado, tres fotografías reales de rosas y recuerdos de Lia (`moment-01.webp`, `moment-03.webp`, `moment-04.webp`).
 6. **Capítulo III · Una carta para ti** — sobre interactivo 3D con sello de cera «L» que al tocarlo se abre y despliega la carta con dedicatoria íntima.
-7. **Capítulo IV · El 28** — número monumental en degradado champagne/rubí con flotación continua, rosas y destellos dorados titilantes.
-8. **Última página · Celebración final** — *«FELIZ CUMPLEAÑOS, LIA»*, lluvia de confeti, pétalos y corazones, recuerdos finales (`moment-05.webp`, `moment-06.webp`) y botón para cerrar y volver a abrir.
+7. **Capítulo IV · El 28** — fecha completa (28/11/2026), contador regresivo local, mención de los 21 años, rosas y destellos dorados titilantes.
+8. **Última página · Celebración final** — *«FELIZ CUMPLEAÑOS, LIA»* con mensajes cálidos en español, inglés e italiano, lluvia de confeti, pétalos y corazones, recuerdos finales (`moment-05.webp`, `moment-06.webp`) y botón para cerrar y volver a abrir.
 
 ## Tecnologías
 
@@ -69,10 +69,20 @@ Abre `http://localhost:8080`.
 - **Anterior / Siguiente** o flechas del teclado `←` / `→` — pasar hojas con efecto 3D
 - **Puntos de página** — saltar directamente a cualquier capítulo
 - **Música** — pad ambiental sintetizado con Web Audio API (opcional y controlado por el usuario)
+- **Canciones para ti** — cada botón abre una búsqueda en Spotify del tema y artista indicados; no se presupone una URI de pista concreta.
 - **Sobre** — abre la carta interactiva con animación 3D
 - **Cerrar y volver a abrir** — reinicia el recorrido del libro y la carta
 
 Todo respeta `prefers-reduced-motion`.
+
+El contador llega a cero a la medianoche del **28/11/2026**, según la zona horaria local del navegador.
+
+## Licencias y atribuciones de imágenes
+
+- Las cuatro imágenes de Snoopy se incluyen localmente a partir del [tablero «Snupy» de Jenna en Pinterest](https://cl.pinterest.com/jennafcn/snupy/). No se verificó la autoría ni la licencia de los pines originales; confirma los derechos antes de publicar el sitio.
+- `assets/roses/rose-red.jpg` — [Casuarez85, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Red_Rose.JPG), [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), redimensionada a 960 × 720.
+- `assets/roses/rose-closeup.jpg` — [Benjamint444, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Rose_-_difinitive.jpg), [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), redimensionada a 602 × 400.
+- `assets/roses/rose-garden.jpg` — [Nonsenseferret, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Red_rose_in_the_Rose_Garden_of_Regent%27s_Park,_London.JPG), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), redimensionada a 960 × 640.
 
 ## Estructura
 
@@ -89,6 +99,8 @@ lia-birthday/
 │   ├── audio.js          · pad ambiental (Web Audio)
 │   └── external-media.js · módulo opcional
 ├── assets/
+│   ├── snoopy/           · imágenes seleccionadas del tablero de Pinterest
+│   ├── roses/            · fotografías con licencia CC BY-SA y atribución
 │   ├── svg/              · ilustraciones originales
 │   └── lia/opt/          · fotografías optimizadas (WebP)
 ├── .nojekyll
