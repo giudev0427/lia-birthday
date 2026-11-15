@@ -83,10 +83,59 @@
     });
   }
 
+  function setupBirthdayCountdown() {
+    const countdown = document.getElementById("birthday-countdown");
+    if (!countdown) return;
+
+    const parts = (countdown.dataset.targetDate || "").split("-").map(Number);
+    if (parts.length !== 3 || parts.some((part) => !Number.isFinite(part))) return;
+
+    const [year, month, day] = parts;
+    const target = new Date(year, month - 1, day, 0, 0, 0, 0);
+    const birthdayEnds = new Date(year, month - 1, day + 1, 0, 0, 0, 0);
+    if (Number.isNaN(target.getTime())) return;
+
+    const daysOutput = document.getElementById("countdown-days");
+    const hoursOutput = document.getElementById("countdown-hours");
+    const minutesOutput = document.getElementById("countdown-minutes");
+    const announcement = document.getElementById("countdown-announcement");
+
+    function updateCountdown() {
+      const now = new Date();
+      const remaining = Math.max(0, target.getTime() - now.getTime());
+      const totalMinutes = Math.floor(remaining / 60000);
+      const days = Math.floor(totalMinutes / 1440);
+      const hours = Math.floor((totalMinutes % 1440) / 60);
+      const minutes = totalMinutes % 60;
+
+      if (daysOutput) daysOutput.textContent = String(days).padStart(2, "0");
+      if (hoursOutput) hoursOutput.textContent = String(hours).padStart(2, "0");
+      if (minutesOutput) minutesOutput.textContent = String(minutes).padStart(2, "0");
+
+      if (now >= target) {
+        countdown.setAttribute("aria-label", "La cuenta regresiva terminó; cumpleaños de Lia, 21 años");
+        if (announcement) {
+          announcement.textContent = now < birthdayEnds
+            ? "¡Feliz cumpleaños, Lia! Hoy cumples 21 años."
+            : "Celebramos los 21 años de Lia, cuyo cumpleaños fue el 28 de noviembre de 2026.";
+        }
+      } else {
+        countdown.setAttribute(
+          "aria-label",
+          `${days} días, ${hours} horas y ${minutes} minutos para el cumpleaños de Lia`
+        );
+      }
+    }
+
+    updateCountdown();
+    window.setInterval(updateCountdown, 60000);
+  }
+
   function init() {
     initAmbient();
     setupMusic();
     setupReplay();
+    setupBirthdayCountdown();
 
     if (window.LiaLetter) {
       LiaLetter.initLetter();
