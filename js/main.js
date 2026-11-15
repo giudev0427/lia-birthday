@@ -95,6 +95,7 @@
     document.addEventListener("pointerdown", retryAfterInteraction, true);
     document.addEventListener("keydown", retryAfterInteraction, true);
     window.addEventListener("lia:languagechange", () => reflectMusicState(LiaAudio.playing));
+    window.addEventListener("lia:ambientstatechange", () => reflectMusicState(LiaAudio.playing));
   }
 
   function setupReplay() {

@@ -822,6 +822,12 @@ button {
   font-size: 0.78rem;
 }
 
+.music-subtitle {
+  margin: 0.38rem auto 0;
+  color: var(--ruby-deep);
+  font-size: clamp(1rem, 2.5vw, 1.28rem);
+}
+
 .song-list {
   display: grid;
   gap: 0.55rem;
@@ -847,6 +853,12 @@ button {
   transform: translateY(-2px);
   border-color: rgba(155, 27, 58, 0.36);
   background: rgba(255, 255, 255, 0.82);
+}
+
+.song-card--featured {
+  border-color: rgba(177, 138, 54, 0.52);
+  background: linear-gradient(135deg, rgba(255, 252, 242, 0.96), rgba(248, 235, 218, 0.88));
+  box-shadow: 0 7px 18px rgba(92, 18, 39, 0.1);
 }
 
 .song-number {
@@ -882,6 +894,20 @@ button {
   color: #76585a;
   font-size: 0.66rem;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.song-badge {
+  align-self: flex-start;
+  margin-bottom: 0.18rem;
+  padding: 0.12rem 0.38rem;
+  border: 1px solid rgba(177, 138, 54, 0.46);
+  border-radius: 999px;
+  color: #7a5a20;
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
   text-transform: uppercase;
 }
 
@@ -927,6 +953,63 @@ button {
   margin: 0.8rem 0 0;
   color: #76585a;
   font-size: 0.64rem;
+  text-align: center;
+}
+
+.spotify-feature {
+  max-width: 35rem;
+  margin: 1rem auto 0;
+  padding: 0.8rem;
+  border: 1px solid rgba(155, 27, 58, 0.16);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.spotify-feature__title {
+  margin: 0 0 0.55rem;
+  color: var(--burgundy);
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.spotify-embed {
+  width: 100%;
+  min-height: 152px;
+  overflow: auto hidden;
+  border-radius: 12px;
+  background: #191414;
+}
+
+.spotify-embed iframe {
+  display: block;
+  width: 100%;
+  min-width: 280px;
+  height: 152px;
+  border: 0;
+}
+
+.spotify-fallback {
+  display: grid;
+  min-height: 152px;
+  margin: 0;
+  padding: 1rem;
+  place-items: center;
+  text-align: center;
+}
+
+.spotify-fallback a {
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.spotify-feature__note {
+  margin: 0.55rem 0 0;
+  color: #76585a;
+  font-size: 0.64rem;
+  line-height: 1.45;
   text-align: center;
 }
 
@@ -1809,6 +1892,7 @@ body::after { right: -15rem; bottom: -14rem; box-shadow: 0 0 0 4rem rgba(196, 30
   .music-dedication { margin-top: 1.35rem; padding: 1rem 0.75rem; }
   .song-card { grid-template-columns: 1.75rem minmax(0, 1fr); padding: 0.7rem; }
   .song-link { width: 100%; justify-content: center; }
+  .spotify-feature { padding: 0.55rem; }
   .companion-stage--page { gap: 0.55rem; }
   .companion-card { padding: 0.45rem; }
   .snoopy-card img { height: 132px; }
