@@ -1838,3 +1838,257 @@ body::after { right: -15rem; bottom: -14rem; box-shadow: 0 0 0 4rem rgba(196, 30
   from { opacity: 0; transform: translateY(10px) scale(0.94); }
   to { opacity: 1; transform: none; }
 }
+
+/* =========================================================
+   Warm café edition — light cream canvas and coffee accents
+   ========================================================= */
+
+:root {
+  --night: #f6ebdd;
+  --night-soft: #ead8c4;
+  --burgundy: #704126;
+  --ruby: #a96642;
+  --ruby-deep: #7d4a2f;
+  --dusty: #c89c7b;
+  --cream: #fffaf3;
+  --cream-muted: #ead8c4;
+  --champagne: #a97743;
+  --champagne-soft: #d9b98e;
+  --paper: #fffdf8;
+  --paper-deep: #f0dfcc;
+  --ink: #3d2a20;
+  --cover: #75472f;
+}
+
+body {
+  background:
+    radial-gradient(circle at 12% 14%, rgba(180, 128, 83, 0.18), transparent 24rem),
+    radial-gradient(circle at 88% 84%, rgba(116, 78, 51, 0.13), transparent 28rem),
+    linear-gradient(145deg, #fffdf8 0%, #f7eddf 48%, #ead7c1 100%);
+  color: #4a3327;
+}
+
+body::before,
+body::after {
+  border-color: rgba(118, 77, 48, 0.1);
+}
+body::before { box-shadow: 0 0 0 3rem rgba(164, 111, 72, 0.035); }
+body::after { box-shadow: 0 0 0 4rem rgba(111, 73, 48, 0.035); }
+
+.world-atmosphere {
+  opacity: 0.7;
+}
+
+.world-vignette {
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 46%, rgba(255, 255, 255, 0.25), transparent 70%),
+    linear-gradient(180deg, rgba(255, 252, 246, 0.08), rgba(113, 73, 45, 0.09));
+}
+
+.book-intro-text {
+  color: #5f3c28;
+  text-shadow: 0 2px 18px rgba(111, 73, 45, 0.14);
+}
+
+.control-btn {
+  width: auto;
+  min-width: 46px;
+  height: 46px;
+  padding: 0 1rem;
+  gap: 0.55rem;
+  background: rgba(255, 250, 243, 0.93);
+  border-color: rgba(112, 65, 38, 0.28);
+  color: #704126;
+  box-shadow: 0 10px 28px rgba(95, 60, 40, 0.16);
+}
+.experience-controls {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.control-btn:hover,
+.control-btn:focus-visible {
+  border-color: #8d5a38;
+  background: #fffdf8;
+}
+.music-toggle__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.control-btn.is-playing {
+  background: #704126;
+  color: #fffaf3;
+}
+
+.book-cover {
+  filter: drop-shadow(0 28px 50px rgba(92, 57, 35, 0.28));
+}
+.book-cover__front {
+  background:
+    linear-gradient(135deg, transparent 46%, rgba(255, 236, 205, 0.11) 50%, transparent 54%),
+    radial-gradient(ellipse 72% 46% at 50% 30%, rgba(201, 144, 94, 0.34), transparent 72%),
+    linear-gradient(155deg, #9a6545 0%, #70432d 55%, #4d3023 100%);
+  border-color: rgba(240, 210, 166, 0.55);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 232, 196, 0.2),
+    inset 0 0 60px rgba(72, 42, 25, 0.18),
+    0 30px 60px rgba(92, 57, 35, 0.28);
+}
+.book-cover__inside {
+  background: linear-gradient(90deg, rgba(104, 69, 44, 0.13), transparent 18%),
+              linear-gradient(180deg, #fffaf1, #ead4bd);
+}
+.book-cover__edge {
+  background: linear-gradient(180deg, #805635, #c99c68 40%, #714729);
+}
+.book-cover__title {
+  text-shadow: 0 4px 20px rgba(66, 38, 23, 0.3);
+}
+
+.pages,
+.sheet-paper {
+  background:
+    radial-gradient(circle at 85% 10%, rgba(174, 119, 72, 0.1), transparent 12rem),
+    repeating-linear-gradient(0deg, transparent 0, transparent 4px, rgba(105, 68, 43, 0.012) 5px),
+    linear-gradient(160deg, #fffdf8, #f7eadb 70%, #ead6c0);
+}
+.pages {
+  box-shadow: 0 26px 70px rgba(93, 59, 37, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.68);
+}
+
+@media (min-width: 900px) {
+  .book-spine {
+    background: linear-gradient(90deg, #4b2d20, #82543a 40%, #65412e 70%, #3f281d);
+    box-shadow: 0 0 22px rgba(83, 51, 31, 0.25);
+  }
+}
+
+.btn-primary,
+.song-link {
+  background: linear-gradient(135deg, #9d6947, #704126 58%, #513223);
+  border-color: rgba(116, 72, 43, 0.35);
+  box-shadow: 0 12px 30px rgba(104, 63, 38, 0.2);
+}
+
+.book-nav {
+  background: rgba(255, 250, 243, 0.88);
+  border: 1px solid rgba(112, 65, 38, 0.16);
+  box-shadow: 0 10px 28px rgba(92, 57, 35, 0.12);
+}
+.book-nav__btn {
+  color: #704126;
+  border-color: rgba(112, 65, 38, 0.26);
+}
+.scene-dot::before {
+  background: rgba(112, 65, 38, 0.18);
+  border-color: rgba(112, 65, 38, 0.38);
+}
+.scene-dot.is-active::before {
+  background: #8b5a3a;
+  border-color: #8b5a3a;
+}
+
+.coffee-moment {
+  max-width: 620px;
+  margin: 1.8rem auto 0.5rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: 1px solid rgba(126, 81, 48, 0.22);
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255, 253, 248, 0.92), rgba(231, 209, 185, 0.72));
+  box-shadow: 0 16px 38px rgba(100, 62, 38, 0.12);
+}
+.coffee-moment__copy {
+  max-width: 31rem;
+  margin: 0 auto 1rem;
+  text-align: center;
+}
+.coffee-moment__copy > p:last-child {
+  margin: 0.45rem auto 0;
+  color: #664936;
+  font-family: var(--font-display);
+  line-height: 1.55;
+}
+.coffee-moment__gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+.coffee-card {
+  margin: 0;
+  padding: 0.45rem;
+  border: 1px solid rgba(126, 81, 48, 0.16);
+  border-radius: 14px;
+  background: rgba(255, 253, 248, 0.78);
+  box-shadow: 0 9px 22px rgba(95, 60, 40, 0.09);
+}
+.coffee-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.coffee-card figcaption {
+  padding: 0.45rem 0.2rem 0.2rem;
+  color: #704126;
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+.music-dedication,
+.birthday-countdown,
+.final-dedication,
+.letter-panel {
+  box-shadow: 0 18px 42px rgba(102, 63, 38, 0.12);
+}
+.song-card,
+.companion-card,
+.birthday-tribute,
+.countdown-unit {
+  border-color: rgba(112, 65, 38, 0.16);
+}
+.envelope__body {
+  background: linear-gradient(160deg, #a26d49, #70432d);
+  box-shadow: 0 18px 45px rgba(92, 57, 35, 0.2);
+}
+.envelope__flap {
+  background: linear-gradient(180deg, #b47a53, #75472f);
+}
+.final-dedication__heart {
+  background: #704126;
+}
+
+.countdown-finished {
+  margin: 0.85rem 0 0;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #7b4b31, #a76d46);
+  color: #fffaf3;
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 4vw, 1.55rem);
+  font-weight: 700;
+  line-height: 1.3;
+  box-shadow: 0 10px 26px rgba(95, 57, 35, 0.22);
+}
+.birthday-countdown.is-finished .countdown-grid {
+  opacity: 0.55;
+}
+
+@media (max-width: 640px) {
+  .experience-controls {
+    top: 0.65rem;
+    right: 0.65rem;
+  }
+  .control-btn {
+    height: 42px;
+    padding-inline: 0.75rem;
+  }
+  .music-toggle__label { font-size: 0.66rem; }
+  .coffee-moment__gallery { grid-template-columns: 1fr; }
+  .coffee-card { max-width: 320px; justify-self: center; }
+}

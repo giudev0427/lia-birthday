@@ -47,14 +47,16 @@
 
     const iconOff = musicBtn.querySelector(".icon-music-off");
     const iconOn = musicBtn.querySelector(".icon-music-on");
+    const label = musicBtn.querySelector(".music-toggle__label");
 
-    musicBtn.addEventListener("click", async () => {
-      const isPlaying = await LiaAudio.toggle();
+    function reflectMusicState(isPlaying) {
       musicBtn.setAttribute("aria-pressed", isPlaying ? "true" : "false");
       musicBtn.setAttribute(
         "aria-label",
-        isPlaying ? "Silenciar música ambiental" : "Activar música ambiental"
+        isPlaying ? "Pausar música ambiental" : "Reproducir música"
       );
+      musicBtn.classList.toggle("is-playing", isPlaying);
+      if (label) label.textContent = isPlaying ? "Pausar música" : "Reproducir música";
 
       if (iconOff && iconOn) {
         if (isPlaying) {
@@ -65,7 +67,19 @@
           iconOn.classList.add("hidden");
         }
       }
+    }
+
+    musicBtn.addEventListener("click", async () => {
+      const isPlaying = await LiaAudio.toggle();
+      reflectMusicState(isPlaying);
     });
+
+    // Browsers commonly block sound before a user gesture. We still make an
+    // honest autoplay attempt and leave the labeled control visible as fallback.
+    window.setTimeout(async () => {
+      const started = await LiaAudio.play();
+      reflectMusicState(started);
+    }, 250);
   }
 
   function setupReplay() {
@@ -92,13 +106,13 @@
 
     const [year, month, day] = parts;
     const target = new Date(year, month - 1, day, 0, 0, 0, 0);
-    const birthdayEnds = new Date(year, month - 1, day + 1, 0, 0, 0, 0);
     if (Number.isNaN(target.getTime())) return;
 
     const daysOutput = document.getElementById("countdown-days");
     const hoursOutput = document.getElementById("countdown-hours");
     const minutesOutput = document.getElementById("countdown-minutes");
     const announcement = document.getElementById("countdown-announcement");
+    const finishedMessage = document.getElementById("countdown-finished");
 
     function updateCountdown() {
       const now = new Date();
@@ -113,13 +127,19 @@
       if (minutesOutput) minutesOutput.textContent = String(minutes).padStart(2, "0");
 
       if (now >= target) {
-        countdown.setAttribute("aria-label", "La cuenta regresiva terminó; cumpleaños de Lia, 21 años");
+        const birthdayMessage = "¡Feliz cumpleaños, Natalia Greys Terraza Taipe!";
+        countdown.classList.add("is-finished");
+        countdown.setAttribute("aria-label", birthdayMessage);
+        if (finishedMessage) {
+          finishedMessage.hidden = false;
+          finishedMessage.textContent = birthdayMessage;
+        }
         if (announcement) {
-          announcement.textContent = now < birthdayEnds
-            ? "¡Feliz cumpleaños, Lia! Hoy cumples 21 años."
-            : "Celebramos los 21 años de Lia, cuyo cumpleaños fue el 28 de noviembre de 2026.";
+          announcement.textContent = birthdayMessage;
         }
       } else {
+        countdown.classList.remove("is-finished");
+        if (finishedMessage) finishedMessage.hidden = true;
         countdown.setAttribute(
           "aria-label",
           `${days} días, ${hours} horas y ${minutes} minutos para el cumpleaños de Lia`
