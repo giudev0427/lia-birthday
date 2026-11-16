@@ -277,6 +277,35 @@ button {
   margin: 0;
 }
 
+.welcome-spotify {
+  width: min(100%, 27rem);
+  margin: -0.25rem auto 0;
+  transition: opacity 0.5s, transform 0.5s var(--ease-out);
+}
+
+.welcome-spotify__eyebrow {
+  margin: 0 0 0.2rem;
+  color: var(--burgundy);
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.book-stage[data-state="opening"] .welcome-spotify,
+.book-stage[data-state="open"] .welcome-spotify {
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateY(12px);
+}
+
 /* ---------- 3D Book ---------- */
 
 .book-scene {
@@ -1893,6 +1922,7 @@ body::after { right: -15rem; bottom: -14rem; box-shadow: 0 0 0 4rem rgba(196, 30
   .song-card { grid-template-columns: 1.75rem minmax(0, 1fr); padding: 0.7rem; }
   .song-link { width: 100%; justify-content: center; }
   .spotify-feature { padding: 0.55rem; }
+  .welcome-spotify { width: min(100%, 25rem); }
   .companion-stage--page { gap: 0.55rem; }
   .companion-card { padding: 0.45rem; }
   .snoopy-card img { height: 132px; }
