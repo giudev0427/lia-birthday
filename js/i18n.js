@@ -21,6 +21,8 @@
     "Para Lía Linda": ["Para Lía Linda", "For Lía Linda", "Per Lía Linda"],
     "A Little World of Magic": ["Un pequeño mundo de magia", "A Little World of Magic", "Un piccolo mondo di magia"],
     "Toca para abrir": ["Toca para abrir", "Tap to open", "Tocca per aprire"],
+    "Una canción para comenzar": ["Una canción para comenzar", "A song to begin", "Una canzone per iniziare"],
+    "Eres la herida más bonita — Mr. Yeff": ["Eres la herida más bonita — Mr. Yeff", "Eres la herida más bonita — Mr. Yeff", "Eres la herida más bonita — Mr. Yeff"],
     "Un regalo hecho con el corazón": ["Un regalo hecho con el corazón", "A gift made from the heart", "Un regalo fatto con il cuore"],
     "Un pequeño universo de rosas, Snoopy, canciones y magia para celebrar tu vida.": ["Un pequeño universo de rosas, Snoopy, canciones y magia para celebrar tu vida.", "A little universe of roses, Snoopy, songs, and magic to celebrate your life.", "Un piccolo universo di rose, Snoopy, canzoni e magia per celebrare la tua vita."],
     "28 de noviembre": ["28 de noviembre", "November 28", "28 novembre"],

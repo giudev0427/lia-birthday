@@ -6,7 +6,7 @@
 
   const TRACK_URI = "spotify:track:516E1cUXyiGvy2xAOmwLln";
   const TRACK_URL = "https://open.spotify.com/track/516E1cUXyiGvy2xAOmwLln";
-  let embedCreated = false;
+  const embedStates = new Map();
 
   function translate(source) {
     return window.LiaI18n?.t(source) || source;
@@ -18,10 +18,8 @@
     window.dispatchEvent(new CustomEvent("lia:ambientstatechange"));
   }
 
-  function showFallback() {
-    if (embedCreated) return;
-    const element = document.getElementById("spotify-embed");
-    if (!element || element.querySelector("iframe")) return;
+  function showFallback(element) {
+    if (!element || embedStates.get(element) === "created" || element.querySelector("iframe")) return;
 
     const link = document.createElement("a");
     link.href = TRACK_URL;
@@ -36,30 +34,33 @@
   }
 
   function updateFallbackLanguage() {
-    const link = document.querySelector("#spotify-embed .spotify-fallback a");
-    if (link) {
+    document.querySelectorAll("[data-spotify-embed] .spotify-fallback a").forEach((link) => {
       link.textContent = translate("No se pudo cargar el reproductor. Abrir Eres la herida más bonita en Spotify");
-    }
+    });
   }
 
   window.onSpotifyIframeApiReady = function (IFrameAPI) {
-    const element = document.getElementById("spotify-embed");
-    if (!element || embedCreated) return;
+    document.querySelectorAll("[data-spotify-embed]").forEach((element) => {
+      if (embedStates.has(element)) return;
+      embedStates.set(element, "loading");
 
-    IFrameAPI.createController(
-      element,
-      {
-        width: "100%",
-        height: 152,
-        uri: TRACK_URI
-      },
-      function (controller) {
-        embedCreated = true;
-        controller.addListener("playback_started", pauseAmbientMusic);
-      }
-    );
+      IFrameAPI.createController(
+        element,
+        {
+          width: "100%",
+          height: 152,
+          uri: TRACK_URI
+        },
+        function (controller) {
+          embedStates.set(element, "created");
+          controller.addListener("playback_started", pauseAmbientMusic);
+        }
+      );
+    });
   };
 
   window.addEventListener("lia:languagechange", updateFallbackLanguage);
-  window.setTimeout(showFallback, 8000);
+  window.setTimeout(() => {
+    document.querySelectorAll("[data-spotify-embed]").forEach(showFallback);
+  }, 8000);
 })();
