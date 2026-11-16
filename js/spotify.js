@@ -4,8 +4,8 @@
 (function () {
   "use strict";
 
-  const TRACK_URI = "spotify:track:60QgNWmJnxSRqz9vbj6pWI";
-  const TRACK_URL = "https://open.spotify.com/track/60QgNWmJnxSRqz9vbj6pWI";
+  const TRACK_URI = "spotify:track:516E1cUXyiGvy2xAOmwLln";
+  const TRACK_URL = "https://open.spotify.com/track/516E1cUXyiGvy2xAOmwLln";
   let embedCreated = false;
 
   function translate(source) {
@@ -27,7 +27,7 @@
     link.href = TRACK_URL;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
-    link.textContent = translate("No se pudo cargar el reproductor. Abrir EL CIELO en Spotify");
+    link.textContent = translate("No se pudo cargar el reproductor. Abrir Eres la herida más bonita en Spotify");
 
     const paragraph = document.createElement("p");
     paragraph.className = "spotify-fallback";
@@ -38,7 +38,7 @@
   function updateFallbackLanguage() {
     const link = document.querySelector("#spotify-embed .spotify-fallback a");
     if (link) {
-      link.textContent = translate("No se pudo cargar el reproductor. Abrir EL CIELO en Spotify");
+      link.textContent = translate("No se pudo cargar el reproductor. Abrir Eres la herida más bonita en Spotify");
     }
   }
 
