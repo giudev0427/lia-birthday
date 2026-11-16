@@ -69,7 +69,7 @@ Abre `http://localhost:8080`.
 - **Anterior / Siguiente** o flechas del teclado `←` / `→` — pasar hojas con efecto 3D
 - **Puntos de página** — saltar directamente a cualquier capítulo
 - **Música** — el sitio intenta iniciar un pad ambiental sintetizado con Web Audio API al entrar; si el navegador bloquea el autoplay, queda disponible el botón visible **Reproducir música**.
-- **Canciones para ti** — cada botón abre una búsqueda en Spotify del tema y artista indicados; no se presupone una URI de pista concreta.
+- **Canciones para ti** — «Eres la herida más bonita» de Mr. Yeff se muestra en el reproductor oficial de Spotify; los demás botones abren una búsqueda del tema y artista indicados.
 - **Sobre** — abre la carta interactiva con animación 3D
 - **Cerrar y volver a abrir** — reinicia el recorrido del libro y la carta
 
