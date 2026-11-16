@@ -48,15 +48,16 @@
     const iconOff = musicBtn.querySelector(".icon-music-off");
     const iconOn = musicBtn.querySelector(".icon-music-on");
     const label = musicBtn.querySelector(".music-toggle__label");
+    const translate = (source) => window.LiaI18n?.t(source) || source;
 
     function reflectMusicState(isPlaying) {
       musicBtn.setAttribute("aria-pressed", isPlaying ? "true" : "false");
       musicBtn.setAttribute(
         "aria-label",
-        isPlaying ? "Pausar música ambiental" : "Reproducir música"
+        translate(isPlaying ? "Pausar música ambiental" : "Reproducir música")
       );
       musicBtn.classList.toggle("is-playing", isPlaying);
-      if (label) label.textContent = isPlaying ? "Pausar música" : "Reproducir música";
+      if (label) label.textContent = translate(isPlaying ? "Pausar música" : "Reproducir música");
 
       if (iconOff && iconOn) {
         if (isPlaying) {
@@ -80,6 +81,21 @@
       const started = await LiaAudio.play();
       reflectMusicState(started);
     }, 250);
+
+    async function retryAfterInteraction(event) {
+      if (musicBtn.contains(event.target) || LiaAudio.playing) return;
+      const started = await LiaAudio.play();
+      reflectMusicState(started);
+      if (started) {
+        document.removeEventListener("pointerdown", retryAfterInteraction, true);
+        document.removeEventListener("keydown", retryAfterInteraction, true);
+      }
+    }
+
+    document.addEventListener("pointerdown", retryAfterInteraction, true);
+    document.addEventListener("keydown", retryAfterInteraction, true);
+    window.addEventListener("lia:languagechange", () => reflectMusicState(LiaAudio.playing));
+    window.addEventListener("lia:ambientstatechange", () => reflectMusicState(LiaAudio.playing));
   }
 
   function setupReplay() {
@@ -127,7 +143,7 @@
       if (minutesOutput) minutesOutput.textContent = String(minutes).padStart(2, "0");
 
       if (now >= target) {
-        const birthdayMessage = "¡Feliz cumpleaños, Natalia Greys Terraza Taipe!";
+        const birthdayMessage = window.LiaI18n?.t("¡Feliz cumpleaños, Natalia Greys Terraza Taipe!") || "¡Feliz cumpleaños, Natalia Greys Terraza Taipe!";
         countdown.classList.add("is-finished");
         countdown.setAttribute("aria-label", birthdayMessage);
         if (finishedMessage) {
@@ -142,13 +158,21 @@
         if (finishedMessage) finishedMessage.hidden = true;
         countdown.setAttribute(
           "aria-label",
-          `${days} días, ${hours} horas y ${minutes} minutos para el cumpleaños de Lia`
+          formatCountdownLabel(days, hours, minutes)
         );
       }
     }
 
+    function formatCountdownLabel(days, hours, minutes) {
+      const language = window.LiaI18n?.language || "es";
+      if (language === "en") return `${days} days, ${hours} hours, and ${minutes} minutes until Lia’s birthday`;
+      if (language === "it") return `${days} giorni, ${hours} ore e ${minutes} minuti al compleanno di Lia`;
+      return `${days} días, ${hours} horas y ${minutes} minutos para el cumpleaños de Lia`;
+    }
+
     updateCountdown();
     window.setInterval(updateCountdown, 60000);
+    window.addEventListener("lia:languagechange", updateCountdown);
   }
 
   function init() {

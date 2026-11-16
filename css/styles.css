@@ -822,6 +822,12 @@ button {
   font-size: 0.78rem;
 }
 
+.music-subtitle {
+  margin: 0.38rem auto 0;
+  color: var(--ruby-deep);
+  font-size: clamp(1rem, 2.5vw, 1.28rem);
+}
+
 .song-list {
   display: grid;
   gap: 0.55rem;
@@ -847,6 +853,12 @@ button {
   transform: translateY(-2px);
   border-color: rgba(155, 27, 58, 0.36);
   background: rgba(255, 255, 255, 0.82);
+}
+
+.song-card--featured {
+  border-color: rgba(177, 138, 54, 0.52);
+  background: linear-gradient(135deg, rgba(255, 252, 242, 0.96), rgba(248, 235, 218, 0.88));
+  box-shadow: 0 7px 18px rgba(92, 18, 39, 0.1);
 }
 
 .song-number {
@@ -882,6 +894,20 @@ button {
   color: #76585a;
   font-size: 0.66rem;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.song-badge {
+  align-self: flex-start;
+  margin-bottom: 0.18rem;
+  padding: 0.12rem 0.38rem;
+  border: 1px solid rgba(177, 138, 54, 0.46);
+  border-radius: 999px;
+  color: #7a5a20;
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
   text-transform: uppercase;
 }
 
@@ -927,6 +953,63 @@ button {
   margin: 0.8rem 0 0;
   color: #76585a;
   font-size: 0.64rem;
+  text-align: center;
+}
+
+.spotify-feature {
+  max-width: 35rem;
+  margin: 1rem auto 0;
+  padding: 0.8rem;
+  border: 1px solid rgba(155, 27, 58, 0.16);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.spotify-feature__title {
+  margin: 0 0 0.55rem;
+  color: var(--burgundy);
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.spotify-embed {
+  width: 100%;
+  min-height: 152px;
+  overflow: auto hidden;
+  border-radius: 12px;
+  background: #191414;
+}
+
+.spotify-embed iframe {
+  display: block;
+  width: 100%;
+  min-width: 280px;
+  height: 152px;
+  border: 0;
+}
+
+.spotify-fallback {
+  display: grid;
+  min-height: 152px;
+  margin: 0;
+  padding: 1rem;
+  place-items: center;
+  text-align: center;
+}
+
+.spotify-fallback a {
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.spotify-feature__note {
+  margin: 0.55rem 0 0;
+  color: #76585a;
+  font-size: 0.64rem;
+  line-height: 1.45;
   text-align: center;
 }
 
@@ -1809,6 +1892,7 @@ body::after { right: -15rem; bottom: -14rem; box-shadow: 0 0 0 4rem rgba(196, 30
   .music-dedication { margin-top: 1.35rem; padding: 1rem 0.75rem; }
   .song-card { grid-template-columns: 1.75rem minmax(0, 1fr); padding: 0.7rem; }
   .song-link { width: 100%; justify-content: center; }
+  .spotify-feature { padding: 0.55rem; }
   .companion-stage--page { gap: 0.55rem; }
   .companion-card { padding: 0.45rem; }
   .snoopy-card img { height: 132px; }
@@ -1909,6 +1993,40 @@ body::after { box-shadow: 0 0 0 4rem rgba(111, 73, 48, 0.035); }
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+.language-switcher {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0 0.72rem;
+  border: 1px solid rgba(112, 65, 38, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 250, 243, 0.93);
+  box-shadow: 0 10px 28px rgba(95, 60, 40, 0.12);
+  color: rgba(112, 65, 38, 0.42);
+  backdrop-filter: blur(8px);
+}
+.language-switcher__btn {
+  min-width: 30px;
+  min-height: 40px;
+  padding: 0 0.25rem;
+  border-radius: 999px;
+  color: #76543e;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.language-switcher__btn:hover,
+.language-switcher__btn:focus-visible,
+.language-switcher__btn.is-active {
+  background: rgba(112, 65, 38, 0.1);
+  color: #704126;
+}
+.language-switcher__btn:focus-visible {
+  outline: 2px solid #a97743;
+  outline-offset: 1px;
 }
 .control-btn:hover,
 .control-btn:focus-visible {
@@ -2087,6 +2205,15 @@ body::after { box-shadow: 0 0 0 4rem rgba(111, 73, 48, 0.035); }
   .control-btn {
     height: 42px;
     padding-inline: 0.75rem;
+  }
+  .language-switcher {
+    min-height: 42px;
+    padding-inline: 0.45rem;
+  }
+  .language-switcher__btn {
+    min-width: 27px;
+    min-height: 36px;
+    font-size: 0.62rem;
   }
   .music-toggle__label { font-size: 0.66rem; }
   .coffee-moment__gallery { grid-template-columns: 1fr; }
